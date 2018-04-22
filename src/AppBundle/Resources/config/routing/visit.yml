@@ -1,0 +1,4 @@
+visit_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Visit:index" }
+    methods:  GET

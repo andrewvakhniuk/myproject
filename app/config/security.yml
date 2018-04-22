@@ -2,8 +2,16 @@
 # https://symfony.com/doc/current/security.html
 security:
 
+    role_hierarchy:
+            ROLE_ADMIN:       ROLE_USER
+            ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
         in_memory:
             memory: ~
 
@@ -14,7 +22,19 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+                check_path: fos_user_security_check
+                login_path: fos_user_security_login
+                always_use_default_target_path: false
+                default_target_path: ordering_index
+            logout:
+                path: fos_user_security_logout
+                target: homepage
+            anonymous:    true
+
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
@@ -22,3 +42,9 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
+
+    access_control:
+        - { path: ^/(%app_locales%)/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(%app_locales%)/register, role: ROLE_ADMIN }
+#        - { path: ^/%app_locales%/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(%app_locales%)/admin/, roles: ROLE_ADMIN }

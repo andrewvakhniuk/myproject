@@ -1,0 +1,46 @@
+ordering_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Ordering:index" }
+    methods:  GET
+
+ordering_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Ordering:show" }
+    methods:  GET
+
+ordering_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Ordering:new" }
+    methods:  [GET, POST]
+
+ordering_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Ordering:edit" }
+    methods:  [GET, POST]
+
+ordering_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Ordering:delete" }
+    methods:  DELETE
+
+ordering_message_ajax:
+    path:     /message_ajax
+    defaults: { _controller: "AppBundle:Ordering:messageAjax" }
+    methods:  [GET, POST]
+
+
+ordering_new_ajax:
+    path:     /new_ajax
+    defaults: { _controller: "AppBundle:Ordering:newAjax" }
+    methods:  [GET, POST]
+
+ordering_datatable_ajax:
+    path:     /datatable_ajax
+    defaults: { _controller: "AppBundle:Ordering:datatableAjax" }
+    methods:  [GET, POST]
+
+ordering_change_status_ajax:
+    path:     /change_status
+    defaults: { _controller: "AppBundle:Ordering:changeStatusAjax"}
+    methods: [GET,POST]
+

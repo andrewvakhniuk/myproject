@@ -1,0 +1,17 @@
+AppBundle\Entity\Visit:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\VisitRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        ip:
+            type: string
+            length: 255
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }

@@ -1,13 +1,179 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Toroflux{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+    {% if app.request.attributes.get('_route')!= 'homepage' and  app.request.attributes.get('_route')!= 'homepage_without_locale' %}
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+                integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"
+                integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
+                crossorigin="anonymous"></script>
+    {% endif %}
+    {% block stylesheets %}{% endblock %}
+    {#base css#}
+    <link href="{{ asset('assets/css/base.css') }}" rel="stylesheet">
+
+</head>
+<body>
+
+
+{# -- if it is not homepage then add nav bar bootstrap 4  -- coz homepage loads bootstrap 3#}
+{% if app.request.attributes.get('_route')== 'homepage' or  app.request.attributes.get('_route')== 'homepage_without_locale' %}
+
+        {#-- Start navigation bar --#}
+
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('homepage') }}">Toroflux</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav ">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('ordering_index') }}"> {{ 'admin.panel'|trans }} </a></li>
+                        {% endif %}
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a class="scroll-to-order" data-block="order" href="#">{{ 'order'|trans }}</a></li>
+                        <li><a class="scroll-to-block" data-block="mu-feature" href="#">{{ 'features'|trans }}</a></li>
+                        {#<li><a class="scroll-to-block" data-block="mu-video" href="#">{{ 'video'|trans }}</a></li>#}
+                        {#<li><a class="scroll-to-block" data-block="mu-apps-screenshot" href="#">{{ 'galery'|trans }}</a>#}
+                        {#</li>#}
+                        {#<li><a class="scroll-to-block" data-block="mu-download" href="#">{{ 'description'|trans }}</a></li>#}
+                        <li><a class="scroll-to-block" data-block="mu-opinions-block"
+                               href="#">{{ 'opinions'|trans }}</a>
+                        </li>
+                        <li><a class="scroll-to-block" data-block="mu-faq" href="#">FAQ</a></li>
+                        <li><a class="scroll-to-block" data-block="mu-contact" href="#">{{ 'contact'|trans }}</a></li>
+                        {#-- include locale#}
+                        <li class="dropdown">
+                            {% include 'locale.html.twig' %}
+                        </li>
+
+                        {#<li style="display: none;" >#}
+                        {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+
+                        {#<a style="color:black;"  href="{{ path('fos_user_security_logout') }}">#}
+                        {#<span class="glyphicon glyphicon-log-out"> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</span>#}
+                        {#</a>#}
+
+                        {#{% else %}#}
+                        {#<a style="color:black;"  href="{{ path('fos_user_security_login') }}">#}
+                        {#<span class="glyphicon glyphicon-log-in"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</span>#}
+                        {#</a>#}
+                        {#{% endif %}#}
+                        {#</li>#}
+
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        {#-- END navigation bar --#}
+
+{% elseif is_granted('ROLE_ADMIN') %}
+
+
+    {#-- START navigation bar --#}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('homepage') }}">Toroflux</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+                <ul class="nav navbar-nav ">
+                    {% if is_granted('ROLE_ADMIN') %}
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('ordering_index') }}">
+                                Orders
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('visit_index') }}">
+                                Visits
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('fos_user_change_password') }}">
+                                Change Password
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ path('fos_user_profile_edit') }}">
+                                Edit Profile
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="dropdown nav-item ">
+                        {% include 'locale.html.twig' %}
+                    </li>
+
+                    <li class="nav-item">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
+                                <span class="glyphicon glyphicon-log-out"> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</span>
+                            </a>
+                        {% else %}
+                            <a class="nav-link" href="{{ path('fos_user_security_login') }}">
+                                <span class="glyphicon glyphicon-log-in"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</span>
+                            </a>
+                        {% endif %}
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {#-- END navigation bar --#}
+
+{% endif %}
+
+<div id="error-messages">
+    {% for type, messages in app.session.flashBag.all %}
+        {% for message in messages %}
+            <div class="{{ type }}">
+                {{ message|trans }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% block errors %}
+    {% endblock %}
+</div>
+{% block outerbody %}{% endblock %}
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+
+{% block javascripts %}{% endblock %}
+</body>
 </html>

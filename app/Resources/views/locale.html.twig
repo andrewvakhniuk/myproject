@@ -1,0 +1,26 @@
+{# app/Resources/views/includes/_flags.html.twig #}
+
+{#-------------to add new language ->  add new file with new language to the "sysrap/src/AppBundle/Resources/translations" forlder and in the config params) ---------------#}
+
+{% set route = app.request.attributes.get('_route') %}
+{% set route_params = app.request.attributes.get('_route_params') %}
+{% set params = route_params|merge(app.request.query.all) %}
+
+{% if route == 'homepage_without_locale' %}
+    {% set route = 'homepage' %}
+{% endif %}
+{# You may want to not print a flag/link for some route , the "if" here let you handle it #}
+
+<a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
+    {{ app.request.locale|trans }}
+</a>
+<ul class="dropdown-menu list-unstyled" aria-labelledby="navbarDropdown">
+    {% for locale in app_locales|split('|') if locale != app.request.locale %}
+
+        <li style="margin-left:25px">
+            <a href="{{ path(route, params|merge({ _locale: locale })) }}">
+                {{ locale|trans }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

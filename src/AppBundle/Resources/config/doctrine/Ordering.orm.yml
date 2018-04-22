@@ -1,0 +1,65 @@
+AppBundle\Entity\Ordering:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\OrderingRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        price:
+            type: integer
+            nullable: false
+        name:
+            type: string
+            length: 255
+        surname:
+            type: string
+            length: 255
+        phone:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        address:
+            nullable: true
+            type: string
+            length: 255
+        postOffice:
+            nullable: true
+            type: string
+            length: 255
+        city:
+            nullable: true
+            type: string
+            length: 255
+        payed:
+            nullable: true
+            type: boolean
+            options:
+                default: false
+        quantity:
+            nullable: false
+            type: integer
+        deliveryType:
+            nullable: false
+            type: string
+            length: 255
+        paymentMethod:
+            nullable: false
+            type: string
+            length: 255
+        status:
+            type: string
+            length: 255
+            nullable: true
+        ipAddress:
+            type: string
+            length: 255
+            nullable: true
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }
