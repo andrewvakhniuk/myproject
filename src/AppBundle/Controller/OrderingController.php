@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class OrderingController extends Controller
 {
 
-    public function datatableAjaxAction(Request $request)
+    public function datatableAjaxAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -56,11 +56,11 @@ class OrderingController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $data = $em->createQueryBuilder()
-            ->select('orders.id,orders.id, orders.phone, orders.name, orders.email,DATE_FORMAT( orders.date, \'%Y-%M-%d %H:%i:%s\' )as date, orders.status')
-            ->from('AppBundle:Ordering', 'orders')
-            ->getQuery()
-            ->getArrayResult();
+//        $data = $em->createQueryBuilder()
+//            ->select('orders.id,orders.id, orders.phone, orders.name, orders.email,DATE_FORMAT( orders.date, \'%Y-%M-%d %H:%i:%s\' )as date, orders.status')
+//            ->from('AppBundle:Ordering', 'orders')
+//            ->getQuery()
+//            ->getArrayResult();
 //        $orderings = $em->getRepository('AppBundle:Ordering')->findAll();
 
         return $this->render('ordering/index.html.twig', array(
@@ -149,11 +149,8 @@ class OrderingController extends Controller
     }
 
     /**
-     * Creates a form to delete a ordering entity.
-     *
-     * @param Ordering $ordering The ordering entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+     * @param Ordering $ordering
+     * @return \Symfony\Component\Form\FormInterface
      */
     private function createDeleteForm(Ordering $ordering)
     {
@@ -171,18 +168,13 @@ class OrderingController extends Controller
             ->setFrom($form['email'])
             ->setTo('torofluxinfo@gmail.com')
             ->setBody('User Email: ' . $form['email'] . '<br> Message:<br>' .
-                $form['message'], 'text/html'
-//                $this->renderView(
-//                    'HelloBundle:Hello:email.txt.twig',
-//                    array('name' => $name)
-//                )
+                $form['message']
+                .
+                '<br><br>
+                ip address:'.$request->getClientIp(), 'text/html'
             );
         $this->get('mailer')->send($message);
 
-        // replace this example code with whatever you need
-//        return $this->render('default/index.html.twig', [
-//            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-//        ]);
         return new JsonResponse($this->get('translator')->trans('contact.message_success'));
     }
 
@@ -224,7 +216,9 @@ class OrderingController extends Controller
                 ->where('orderings.id IN ('.implode(',',$params['ids']).')')
                 ->getQuery()
                 ->getResult();
+           
             foreach ($orderings as $ordering){
+
                 if($field === 'status'){
                     $ordering->setStatus($value);
                 }else{
