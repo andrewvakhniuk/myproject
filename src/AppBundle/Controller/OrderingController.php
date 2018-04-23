@@ -167,10 +167,10 @@ class OrderingController extends Controller
     {
         $form = $request->request->all();
 
-        $message = (new \Swift_Message($form['name'] . ' Contact toroflux website'))
+        $message = (new \Swift_Message($form['name'] . ' Help Contact Service'))
             ->setFrom($form['email'])
-            ->setTo('andrewvakhniuk@gmail.com')
-            ->setBody('Email: ' . $form['email'] . '<br> Message:' .
+            ->setTo('torofluxinfo@gmail.com')
+            ->setBody('User Email: ' . $form['email'] . '<br> Message:<br>' .
                 $form['message'], 'text/html'
 //                $this->renderView(
 //                    'HelloBundle:Hello:email.txt.twig',
