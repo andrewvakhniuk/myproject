@@ -216,7 +216,7 @@ class OrderingController extends Controller
                 ->where('orderings.id IN ('.implode(',',$params['ids']).')')
                 ->getQuery()
                 ->getResult();
-           
+
             foreach ($orderings as $ordering){
 
                 if($field === 'status'){

@@ -520,7 +520,7 @@ button:focus {
     margin-bottom: 15px;
     padding: 0;
     z-index: 10;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
 }
 
 .mu-title-dot {
@@ -625,8 +625,9 @@ button:focus {
 .mu-video-overlay {
     display: inline;
     float: left;
-    opacity: 0.7;
+    /*opacity: 0.7;*/
     width: 100%;
+    background-color: transparent;
 }
 
 .mu-video-area {
@@ -635,10 +636,14 @@ button:focus {
     padding: 200px 0;
     text-align: center;
     width: 100%;
+
 }
 
 .mu-video-area h2 {
-    color: #fff;
+    display: none;
+    color: black;
+    background-color: white;
+    opacity: 0.5;
 }
 
 .mu-video-content {
@@ -649,16 +654,19 @@ button:focus {
 
 .mu-video-play-btn,
 .mu-video-close-btn {
-    color: #fff;
-    font-size: 22px;
-    border: 2px solid #fff;
+    /*text-align: center;*/
+    /*margin:auto;*/
+    padding-left:10px;
+    color: aliceblue;
+    font-size: 60px;
+    border: 5px solid red;
     border-radius: 50%;
-    width: 60px;
+    width: 90px;
     display: inline-block;
-    height: 60px;
-    line-height: 55px;
+    height: 90px;
+    line-height: 80px;
     text-align: center;
-    margin-top: 100px;
+    /*margin-top: 100px;*/
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;

@@ -151,7 +151,7 @@ $('.mu-header-featured-area').css({'height':'400px'});
         event.preventDefault();
 
         $('html,body').animate({
-            scrollTop: $('#order-container').offset().top
+            scrollTop: $('#order-header').offset().top
         }, 300, 'swing');
     });
 
