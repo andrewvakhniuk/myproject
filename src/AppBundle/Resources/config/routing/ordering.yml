@@ -23,11 +23,6 @@ ordering_delete:
     defaults: { _controller: "AppBundle:Ordering:delete" }
     methods:  DELETE
 
-ordering_message_ajax:
-    path:     /message_ajax
-    defaults: { _controller: "AppBundle:Ordering:messageAjax" }
-    methods:  [GET, POST]
-
 
 ordering_new_ajax:
     path:     /new_ajax

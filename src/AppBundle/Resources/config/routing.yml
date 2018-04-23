@@ -26,6 +26,12 @@ ordering_details:
     defaults: { _controller: "AppBundle:Default:orderingDetails"}
     methods: GET
 
+ordering_message_ajax:
+    path:     /message_ajax
+    defaults: { _controller: "AppBundle:Ordering:messageAjax" }
+    methods:  [GET, POST]
+
+
 app_ordering:
     resource: "@AppBundle/Resources/config/routing/ordering.yml"
     prefix:   /admin/ordering

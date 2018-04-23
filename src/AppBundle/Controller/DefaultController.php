@@ -28,7 +28,7 @@ class DefaultController extends Controller
                 ]);
             }
         }
-        throw new NotFoundHttpException();
+        return $this->redirectToRoute('homepage');
     }
 
     public function indexAction(Request $request)
