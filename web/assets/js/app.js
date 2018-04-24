@@ -254,6 +254,7 @@ $(function () {
         function validatePhone() {
             var filter = /^[0-9-+]+$/;
             if (filter.test($phoneField.val())) {
+                $phoneField.parent().removeClass('has-error');
                 return true;
             } else {
                 $phoneField.parent().addClass('has-error');
@@ -272,7 +273,10 @@ $(function () {
                 $orderForm.find(':input, select').each(function () {
                     if ($(this).val() === null || $(this).val() === "") {
                         $(this).parent().addClass('has-error');
+                    }else {
+                        $(this).parent().removeClass('has-error');
                     }
+                    validatePhone();
                 });
                 if (!$orderForm[0].checkValidity()) {
                     $orderForm.find('input[type="submit"]').click();

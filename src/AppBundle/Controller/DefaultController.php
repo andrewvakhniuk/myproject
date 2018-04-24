@@ -35,12 +35,20 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        // save ip address to visits
-        $visit = new Visit();
-        $visit->setDate(new \DateTime('now'));
-        $visit->setIp($request->getClientIp());
-        $em->persist($visit);
-        $em->flush();
+        // save ip address to visits and session
+        $visitId = $this->get('session')->get('visit_id');
+        $visit = null;
+        if($visitId !== null) {
+            $visit = $em->getRepository('AppBundle:Visit')->find($visitId);
+        }
+        if($visit === null) {
+            $visit = new Visit();
+            $visit->setDate(new \DateTime('now'));
+            $visit->setIp($request->getClientIp());
+            $em->persist($visit);
+            $em->flush();
+            $this->get('session')->set('visit_id', $visit->getId());
+        }
         // END save ip address to visits
 
         // handle request wth ordering form
