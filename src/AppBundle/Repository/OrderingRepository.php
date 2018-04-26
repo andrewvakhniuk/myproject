@@ -10,4 +10,7 @@ namespace AppBundle\Repository;
  */
 class OrderingRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByLink($link){
+        return $this->findOneBy(['link'=>$link]);
+    }
 }

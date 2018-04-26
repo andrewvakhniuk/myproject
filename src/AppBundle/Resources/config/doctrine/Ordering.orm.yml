@@ -9,6 +9,10 @@ AppBundle\Entity\Ordering:
             generator:
                 strategy: AUTO
     fields:
+        link:
+            type: string
+            length: 255
+            nullable: false
         price:
             type: integer
             nullable: false
@@ -18,12 +22,14 @@ AppBundle\Entity\Ordering:
         surname:
             type: string
             length: 255
+            nullable: true
         phone:
             type: string
             length: 255
         email:
             type: string
             length: 255
+            nullable: true
         address:
             nullable: true
             type: string

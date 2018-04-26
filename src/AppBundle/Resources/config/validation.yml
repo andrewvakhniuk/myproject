@@ -1,26 +1,26 @@
 AppBundle\Entity\Ordering:
     properties:
-        name:
-            - NotBlank: ~
-            - Length:
-                min: 3
-        surname:
-            - NotBlank: ~
-            - Length:
-                min: 3
-        phone:
-            - NotBlank: ~
-            - Length:
-                min: 9
-                max: 9
-        email:
-            - Email:
-                message: The email "{{ value }}" is not a valid email.
-                checkMX: true
+#        name:
+#            - NotBlank: ~
+#            - Length:
+#                min: 3
+#        surname:
+#            - NotBlank: ~
+#            - Length:
+#                min: 3
+#        phone:
+#            - NotBlank: ~
+#            - Length:
+#                min: 9
+#                max: 9
+#        email:
+#            - Email:
+#                message: The email "{{ value }}" is not a valid email.
+#                checkMX: true
         quantity:
             - Range:
                 min: 1
-                max: 500
+                max: 10
                 minMessage: You must be at least {{ limit }}cm tall to enter
                 maxMessage: You cannot be taller than {{ limit }}cm to enter
         deliveryType:

@@ -1,0 +1,437 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container my-container">
+        <div class="inner-container">
+            <hr>
+            <h5 style="margin-bottom: 5px;text-align: center;">{{ 'order.confiramtion'|trans|raw }}</h5>
+            {#<ul class="list-group list-group-flush">#}
+                {#<li class="list-group-item"><b>{{ 'name'|trans }}</b>: {{ ordering.getName() }} </li>#}
+                {#<li class="list-group-item"><b>{{ 'phone'|trans }}</b>: {{ ordering.getPhone() }} </li>#}
+                {#<li class="list-group-item"><b>{{ 'quantity'|trans }}</b>: {{ ordering.getQuantity() }}</li>#}
+            {#</ul>#}
+            <hr>
+            <br>
+            <div class="form-border">
+                {{ form_start(form,{'attr':{'id':'order-form'}}) }}
+
+
+
+                {#-----   delivery type  --- #}
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label col-form-label-sm">{{ 'delivery.type'|trans|raw }}</label>
+                    <div class="col-sm-10">
+                        <div id="delivery-type-radio" class="funkyradio">
+                            <div class="funkyradio-primary">
+                                <input value="self_checkout" type="radio" name="radio" id="self_checkout"
+                                       checked/>
+                                <label for="self_checkout">
+                                    <p>
+                                    {{ 'delivery.self_checkout'|trans|raw }}
+                                    </p>
+                                </label>
+                            </div>
+                            <div class="funkyradio-primary">
+                                <input value="by_post" type="radio" name="radio" id="by_post"/>
+                                <label for="by_post">
+                                    <p>
+                                    <img style="width: 30px;"
+                                         src="http://files.adme.ua/files/news/part_12/128027/preview-170x138.jpg">
+                                    {{ 'delivery.by_post'|trans|raw }} ({{ 'price.for.delivery.service'|trans|raw }})
+                                    </p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {#----- END  delivery type --- #}
+
+                {#// ---  address fields #}
+
+
+
+                {#--- by post fileds#}
+
+                <div class="delivery-fields" id="by_post_fields" style="display:none">
+
+
+                    {#----- START  payment method --- #}
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label col-form-label-sm">{{ 'payment_method'|trans|raw }}</label>
+                        <div class="col-sm-10">
+                            <div id="payment-method-radio-container" class="funkyradio">
+                                <div class="funkyradio-primary">
+                                    <input value="by_card" type="radio" name="radio-payment-method" id="by_card"
+                                           checked/>
+                                    <label for="by_card">
+                                        <p>
+                                        {{ 'payment_method.by_card'|trans|raw }}
+                                        </p>
+                                    </label>
+                                </div>
+                                <div class="funkyradio-primary">
+                                    <input value="after_delivery" type="radio" name="radio-payment-method"
+                                           id="after_delivery"/>
+                                    <label for="after_delivery">
+                                        <p>
+                                        {{ 'payment_method.after_delivery'|trans|raw }}
+                                        ({{ 'price.for.payment.after_delivery'|trans|raw }})
+                                        </p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {#----- END  payment method --- #}
+                    <div class="form-group row">
+                        {{ form_label(form.surname,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
+                        <div class="col-sm-10 ">
+                            {{ form_errors(form.surname) }}
+                            {{ form_widget(form.surname) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label col-form-label-sm control-label required"
+                               for="appbundle_ordering_city">{{ 'city'|trans|raw }}</label>
+                        <div class="col-sm-10">
+
+                            <select id="appbundle_ordering_city" name="appbundle_ordering[city]"
+                                    placeholder="city" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label col-form-label-sm control-label required"
+                               for="appbundle_ordering_postOffice">{{ 'post.office'|trans|raw }}</label>
+                        <div class="col-sm-10">
+
+                            <select id="appbundle_ordering_postOffice" name="appbundle_ordering[postOffice]"
+                                    placeholder="post.office" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                {##  END --- by post fileds#}
+
+                {#----self-checkout#}
+                {#<div class="form-group row delivery-fields" id="self_checkout_fields"#}
+                     {#style="display:none;"#}
+                {#>#}
+                    {#<p style="margin:0 auto;">{{ 'delivery.self_checkout.description'|trans|raw }} {{ 'location.description'|trans|raw }}#}
+                    {#</p>#}
+                {#</div>#}
+
+                {#  -- END address fields#}
+                <hr>
+                {#<br>#}
+                <div class="form-group row ">
+                    <button id="submit-order-button" style="margin: 0 auto; width: 80%;"
+                            class="btn btn-danger btl-lg">{{ 'confirm.order'|trans|raw }}</button>
+                </div>
+                <hr>
+                <div>
+                    <input type="submit" style="display: none">
+                </div>
+                {#<div style="font-size: 10px;color:grey;">#}
+                    {#{{ 'data.usage'|trans|raw }}#}
+                {#</div>#}
+                {# Token CSRF #}
+                {{ form_widget(form.deliveryType) }}
+                {{ form_widget(form.paymentMethod) }}
+                {{ form_widget(form.price) }}
+                {{ form_widget(form.name) }}
+                {{ form_widget(form.phone) }}
+                {{ form_widget(form.quantity) }}
+
+                {{ form_widget(form._token) }}
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.my-container').css({'min-height': window.innerHeight })
+        // my code
+
+        //--- START variables
+        var $orderForm = $('#order-form');
+        var $submitOrderButton = $('#submit-order-button');
+        var $cityField = $('#appbundle_ordering_city');
+        var $postOffice = $('#appbundle_ordering_postOffice');
+        var $deliveryTypeHiddenField = $('#appbundle_ordering_deliveryType');  // 3 types : by_post/self_checkout/by_post_address
+        var $deliveryTypeRadio = $('#delivery-type-radio');
+        //select post & location description divs
+        var $deliveryFields = $('.delivery-fields');
+        var $paymentMethodHiddenField = $('#appbundle_ordering_paymentMethod');
+        var $paymentMethodRadio = $('#payment-method-radio-container');
+        var $surnameField = $('#appbundle_ordering_surname');
+
+        var discountPrice = 63;
+        var afterDeliveryPaymentPrice = 30;
+        var postServicePrice = 35;
+        var productPrice = 189;
+
+        function countDiscount() {
+            return (discountPrice / (discountPrice + productPrice)) * 100;
+        }
+
+        //make theme of select2 bootstrap
+        $.fn.select2.defaults.set("theme", "bootstrap");
+
+
+        //if farm was invalid
+
+
+        // --- document ready
+        $(document).ready(function () {
+
+            //url json to connect to Nova Poshta API 2.0
+            var novaposhtaUrl = "https://api.novaposhta.ua/v2.0/json/";
+            //personal API 2.0 KEY needed to connect to api
+            var novaposhtaApiKey = "5ebb91ca0cca996fe101cddd6ecb8395";
+
+            //params to look for cities using api
+            var ajaxCityParams = {
+                "apiKey": novaposhtaApiKey,
+                "modelName": "Address",
+                "calledMethod": "searchSettlements",
+                "methodProperties": {
+                    "CityName": "",
+                    "Limit": 20
+                }
+            };
+            //init city field select2
+            var placeholder = $('label[for="' + $cityField.attr('id') + '"]').text();
+            console.log(placeholder);
+            $cityField.select2({
+                language: locale,
+                placeholder: placeholder,
+                theme: "bootstrap",
+                minimumInputLength: 1,
+                ajax: {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": novaposhtaUrl,
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/json",
+                    },
+                    "processData": false,
+
+                    // modify params before sending , add city input to ajaxCityParams.methodProperties.CityName
+                    data: function (params) {
+                        ajaxCityParams.methodProperties.CityName = params.term;
+                        // obligatory , api receive params in json type
+                        return JSON.stringify(ajaxCityParams);
+                    },
+                    // process data after receiving a success result to [{id: '',text: ''},..]
+                    processResults: function (data) {
+                        if (data.success === true) {
+                            var result = data.data[0].Addresses.map(function (address) {
+                                //MainDescription is city name
+                                return {id: address.MainDescription, text: address.MainDescription};
+                            });
+                            return {results: result};
+                        } else {
+                            return {results: []}
+                        }
+
+                    }
+                }
+            });
+            //params for receiving post  offices of Nova Poshta
+            var ajaxWarehousesParams = {
+                "apiKey": novaposhtaApiKey,
+                "modelName": "AddressGeneral",
+                "calledMethod": "getWarehouses",
+                "methodProperties": {
+                    "CityName": "-",
+                    "Language": "ua"
+                }
+            };
+
+            //init  post office field
+            placeholder = $('label[for="' + $postOffice.attr('id') + '"]').text();
+            $postOffice.select2({
+                placeholder: placeholder,
+                language: locale
+            });
+            // on city change
+            $cityField.on('change', function () {
+                // alert(typeof ($cityField.val()));
+                ajaxWarehousesParams.methodProperties.CityName = $cityField.val();
+                var data = JSON.stringify(ajaxWarehousesParams);
+                $.ajax({
+                    "async": true,
+                    "crossDomain": true,
+                    "url": novaposhtaUrl,
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "processData": false,
+                    data: data,
+                    // process data after receiving a success result to [{id: '',text: ''},..]
+                    success: function (data) {
+                        if (data.success === true) {
+                            var warehouses = data.data.map(function (office) {
+                                return {id: office.Description, text: office.Description};
+                            });
+                            //clear the postOffice field
+                            $postOffice.val(null).empty().trigger('change');
+                            $postOffice.select2({
+                                'data': warehouses,
+                                placeholder: placeholder,
+                                language: locale
+                            });
+                        }
+                    }
+                });
+            });
+
+            //on delivery type change
+            $deliveryTypeRadio.change(function () {
+                // get selected delivery type id
+                var selectedDeliveryType = $deliveryTypeRadio.find("input[name='radio']:checked").val();
+
+                //set delivery type form hidden filed
+                $deliveryTypeHiddenField.val(selectedDeliveryType);
+
+                //hide and show needed delivery fields
+                $deliveryFields.animate({
+                    height: "toggle"
+                }, 100);
+                // clear selects
+                $postOffice.val(null).empty().trigger('change');
+                $cityField.val(null).empty();
+            });
+
+            //  hide/show delivery type fields (select novaposhta or location description)
+            $('#' + $deliveryTypeHiddenField.val() + '_fields').show();
+            $('#' + $deliveryTypeHiddenField.val()).prop('checked', 'true');
+
+
+            //on payment method change
+            $paymentMethodRadio.change(function () {
+                // get selected payment method id
+                var selectedPaymentMethod = $paymentMethodRadio.find("input[name='radio-payment-method']:checked").val();
+                //set delivery type form hidden filed
+                $paymentMethodHiddenField.val(selectedPaymentMethod);
+            });
+
+
+            //check if all required fields are filled up
+            function validateForm() {
+                //check selects separately
+                // alert( $postOffice.val()===null);
+
+                if ((($deliveryTypeHiddenField.val() === 'by_post' && $cityField.val() !== null && $postOffice.val() !== null && $surnameField.val() !== "")
+                        || ($deliveryTypeHiddenField.val() === 'self_checkout'))) {
+                    return true;
+                } else {
+                    $orderForm.find(':input, select').each(function () {
+                        if ($(this).val() === null || $(this).val() === "") {
+                            $(this).parent().addClass('has-error');
+                        } else {
+                            $(this).parent().removeClass('has-error');
+                        }
+                    });
+                    if (!$orderForm[0].checkValidity()) {
+                        $orderForm.find('input[type="submit"]').click();
+                    }
+                    console.log('false');
+                    return false;
+                }
+            }
+
+            //on submit the form
+            $submitOrderButton.on('click', function (e) {
+                // $orderForm.submit();
+
+                e.preventDefault();
+                //trigger html5 validation
+                if (validateForm()) {
+
+                    $orderForm.submit();
+
+                }
+
+            });
+
+        });
+    </script>
+
+{% endblock %}
+{% block stylesheets %}
+
+    <script>
+        var locale = "{{ app.request.locale }}";
+    </script>
+    {#----  select 2  ---#}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    {#---- END select 2  ---#}
+    {#-- select2 - bootstrap css#}
+    <link href="{{ asset('assets/select2-bootstrap/dist/select2-bootstrap.css') }}" rel="stylesheet">
+    {#--END select2 - bootstrap css#}
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/{{ app.request.locale }}.js"></script>
+    <!-- Main Style -->
+    {#<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">#}
+    <link href="{{ asset('assets/css/radioButtons.css') }}" rel="stylesheet">
+
+    <style>
+        body{
+            background-color: lightgray;
+        }
+        .select2 {
+            width: 100% !important;
+        }
+
+        ul li {
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .my-container {
+            -webkit-box-shadow:  0px 0px 10px 3px grey; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow: 0px 0px 10px 3px grey;/* Firefox 3.5 - 3.6 */
+            box-shadow: 0px 0px 10px 3px grey;
+            width: 800px;
+            background-color:white;
+
+            /*box-shadow: 3px 2px grey, -0.2em 0 0.2em grey;*/
+        }
+
+        .form-border {
+            margin-left: 15px;
+        }
+        .inner-container{
+            padding:50px;
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 800px) {
+            .my-container {
+                width: 100%;
+            }
+            .inner-container{
+                padding-left:0px;
+                padding-right: 0px;
+                padding-top:30px;
+            }
+        }
+        @media (max-height: 500px) {
+            .inner-container{
+                padding-top:20px;
+            }
+        }
+    </style>
+
+{% endblock %}

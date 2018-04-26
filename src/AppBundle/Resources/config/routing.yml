@@ -21,15 +21,24 @@ fos_user_change_password:
 
 
 #---------------------------------------------------
-ordering_details:
-    path:     /ordering_details
-    defaults: { _controller: "AppBundle:Default:orderingDetails"}
-    methods: GET
+ordering_finish2:
+    path:     /ordering_finish2
+    defaults: { _controller: "AppBundle:Default:orderingFinish2"}
+    methods: [GET,POST]
 
+ordering_details:
+    path:     /ordering_details/{link}
+    defaults: { _controller: "AppBundle:Default:orderingDetails"}
+    methods: [GET,POST]
 ordering_message_ajax:
     path:     /message_ajax
     defaults: { _controller: "AppBundle:Ordering:messageAjax" }
     methods:  [GET, POST]
+homepage:
+    path:     /
+    defaults: { _controller: "AppBundle:Default:index" }
+    methods:  [GET,POST]
+
 
 
 app_ordering:
@@ -40,7 +49,3 @@ app_visit:
     resource: "@AppBundle/Resources/config/routing/visit.yml"
     prefix:   /admin/visit
 
-homepage:
-    path:     /
-    defaults: { _controller: "AppBundle:Default:index" }
-    methods:  [GET,POST]

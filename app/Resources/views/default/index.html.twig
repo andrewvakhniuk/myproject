@@ -2,13 +2,24 @@
 
 {% block outerbody %}
 
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v2.12&appId=1062385993857234&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <!-- Start Header -->
     <header id="mu-header" class="" role="banner">
         <div id="header-video"></div>
         {#<iframe id="header-video" class="mu-video-iframe" width="854" height="480"#}
-                {#src="https://www.youtube.com/embed/QuUZLe5BWXk?autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&modestbranding=1" frameborder="0" allowfullscreen volume="0"></iframe>#}
+        {#src="https://www.youtube.com/embed/QuUZLe5BWXk?autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&modestbranding=1" frameborder="0" allowfullscreen volume="0"></iframe>#}
         <div class="mu-header-overlay">
-            <div >
+            <div>
                 <div class="mu-header-area">
 
                     <!-- Start header featured area -->
@@ -18,12 +29,12 @@
                         {#</div>#}
 
                         <div class="mu-header-featured-content">
-                            <h1>{{ 'header.header'|trans }}</h1>
-                            {#<p>{{ 'header.body'|trans }}</p>#}
+                            <h1>{{ 'header.header'|trans|raw }}</h1>
+                            {#<p>{{ 'header.body'|trans|raw }}</p>#}
 
                             {#<div class="mu-app-download-area">#}
-                                {#<h4>{{ 'make.an.order'|trans }}</h4>#}
-                                {#<a class="mu-apple-btn scroll-to-order" href="#"><span>{{ 'order'|trans }}</span></a>#}
+                            {#<h4>{{ 'make.an.order'|trans|raw }}</h4>#}
+                            {#<a class="mu-apple-btn scroll-to-order" href="#"><span>{{ 'order'|trans|raw }}</span></a>#}
                             {#</div>#}
 
                         </div>
@@ -38,7 +49,7 @@
 
     <!-- Start Menu -->
     <button class="mu-menu-btn scroll-to-order">
-        {{ 'order'|trans }}
+        {{ 'order'|trans|raw }}
     </button>
     {#<div class="mu-menu-full-overlay">#}
     {#<div class="mu-menu-full-overlay-inner">#}
@@ -74,158 +85,68 @@
                     <br>
 
                     <div class="mu-title-area">
-                        <h2 id="order-header" class="mu-title">{{ 'order.header'|trans }}</h2>
+                        <h2 id="order-header" class="mu-title">{{ 'order.header'|trans|raw }}</h2>
                         <span class="mu-title-dot"></span>
                         <p>
-                            <img style="width: 50px;" src="http://files.adme.ua/files/news/part_12/128027/preview-170x138.jpg">
-                            {{ 'order.description'|trans }}
+                            <img style="width: 50px;"
+                                 src="http://files.adme.ua/files/news/part_12/128027/preview-170x138.jpg">
+                            {{ 'order.description'|trans|raw }}
                         </p>
                     </div>
                     <div class="mu-faq-content">
                         <div class="form-border">
                             {{ form_start(form,{'attr':{'id':'order-form'}}) }}
-
-                            <div class="form-row ">
-                                <div class="form-group col-md-6 ">
-                                    {{ form_label(form.name) }}
+                            <div class="form-group row">
+                                {{ form_label(form.name,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
+                                <div class="col-sm-10 ">
                                     {{ form_errors(form.name) }}
-                                    {{ form_widget(form.name) }}
-
-                                </div>
-                                <div class="form-group col-md-6">
-                                    {{ form_label(form.surname) }}
-                                    {{ form_errors(form.surname) }}
-                                    {{ form_widget(form.surname) }}
+                                    {{ form_widget(form.name,{'attr':{'class':'check-error'}}) }}
                                 </div>
                             </div>
                             <div class="form-group row">
                                 {{ form_label(form.phone,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
                                 <div class="col-sm-10 ">
                                     {{ form_errors(form.phone) }}
-                                    {{ form_widget(form.phone,{'attr':{'minLength':'9','maxLength':'9'}}) }}
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                {{ form_label(form.email,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
-                                <div class="col-sm-10">
-                                    {{ form_errors(form.email) }}
-                                    {{ form_widget(form.email) }}
+                                    {{ form_widget(form.phone,{'attr':{'minLength':'9','maxLength':'9','class':'check-error'}}) }}
                                 </div>
                             </div>
                             <div class="form-group row">
                                 {{ form_label(form.quantity,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
                                 <div class="col-sm-10">
                                     {{ form_errors(form.quantity) }}
-                                    {{ form_widget(form.quantity,{'attr':{'type':'number','min':'1','max':'10','step':'1'},'type':'number'}) }}
+                                    {{ form_widget(form.quantity,{'attr':{'type':'number','min':'1','max':'10','step':'1','class':'check-error'},'type':'number'}) }}
                                 </div>
                             </div>
-                            {#-----   payment method --- #}
+                            {#//--price#}
+
+                            <div style="text-align: center;margin: auto;width:100%; margin:10px;" class="form-group row">
+                                <div  class="price col-sm-2 col-form-label"
+                                     style="text-align: center;display: inline-flex;margin:5px; white-space: nowrap; width:100%;">
+                                    <h4 id="price"  style="text-align: center;margin: auto;"></h4>
+                                </div>
+                            </div>
+
+                            {{ form_widget(form.deliveryType) }}
+                            {{ form_widget(form.paymentMethod) }}
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label col-form-label-sm">{{ 'payment_method'|trans }}</label>
-                                <div class="col-sm-10">
-                                    <div id="payment-method-radio-container" class="funkyradio">
-                                        <div class="funkyradio-success">
-                                            <input value="by_card" type="radio" name="radio-payment-method" id="by_card"
-                                                   checked/>
-                                            <label for="by_card">{{ 'payment_method.by_card'|trans }}</label>
-                                        </div>
-                                        <div class="funkyradio-success">
-                                            <input value="after_delivery" type="radio" name="radio-payment-method"
-                                                   id="after_delivery"/>
-                                            <label for="after_delivery">{{ 'payment_method.after_delivery'|trans }}</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            {#----- END  payment method --- #}
-
-                            {#-----   delivery type  --- #}
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label col-form-label-sm">{{ 'delivery.type'|trans }}</label>
-                                <div class="col-sm-10">
-                                    <div id="delivery-type-radio" class="funkyradio">
-                                        <div class="funkyradio-success">
-                                            <input value="self_checkout" type="radio" name="radio" id="self_checkout"
-                                                   checked/>
-                                            <label for="self_checkout">{{ 'delivery.self_checkout'|trans }}</label>
-                                        </div>
-                                        <div class="funkyradio-success">
-                                            <input value="by_post" type="radio" name="radio" id="by_post"/>
-                                            <label for="by_post">
-                                                <img style="width: 30px;" src="http://files.adme.ua/files/news/part_12/128027/preview-170x138.jpg">
-                                                {{ 'delivery.by_post'|trans }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            {#----- END  delivery type --- #}
-
-                            {#// ---  address fields #}
-
-                            {#--- by post fileds#}
-
-                            <div class="delivery-fields" id="by_post_fields"
-                                 style="display:none"
-                            >
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label col-form-label-sm control-label required"
-                                           for="appbundle_ordering_city">{{ 'city'|trans }}</label>
-                                    <div class="col-sm-10">
-
-                                        <select id="appbundle_ordering_city" name="appbundle_ordering[city]"
-                                                placeholder="city" class="form-control"></select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label col-form-label-sm control-label required"
-                                           for="appbundle_ordering_postOffice">{{ 'post.office'|trans }}</label>
-                                    <div class="col-sm-10">
-
-                                        <select id="appbundle_ordering_postOffice" name="appbundle_ordering[postOffice]"
-                                                placeholder="post.office" class="form-control"></select>
-                                    </div>
-                                </div>
-                            </div>
-                            {##  END --- by post fileds#}
-
-                            {#----self-checkout#}
-                            <div class="delivery-fields" id="self_checkout_fields"
-                                 style="display:none"
-                            >
-                                <p>{{ 'delivery.self_checkout.description'|trans }}</p>
-                                <p> <span class="glyphicon glyphicon-map-marker"></span> {{ 'location.description'|trans }}
-                                </p>
-                            </div>
-
-                            {#  -- END address fields#}
-                            <div class="form-group row ">
-                                <div class="price col-sm-2 col-form-label"
-                                     style="display: inline-flex;margin-top:30px; white-space: nowrap;">
-                                    <h4 id="price"></h4>
-                                </div>
-                                <div class="round col-sm-10">
-                                    <a id="submit-order-button" class="button" href="#">{{ 'order'|trans }}</a>
-                                </div>
+                                <button style="width:80%;background-color:#c82333;color:white;" id="submit-order-button" class="btn btn-danger btn-lg">
+                                    {{ 'order'|trans|raw }}
+                                </button>
+                                {#<div style="margin:auto;" class="submit-button round col-sm-10">#}
+                                {#<a  id="submit-order-button" class="button" href="#">{{ 'order'|trans|raw }}</a>#}
+                                {#</div>#}
                             </div>
                             <div>
                                 <input type="submit" style="display: none">
                             </div>
-                            <div style="font-size: 10px;color:grey;">
-                                {{ 'data.usage'|trans }}
+                            <div style="font-size: 8px;color:grey;">
+                                {{ 'data.usage'|trans|raw }}
                             </div>
-                            {# Token CSRF #}
-                            {{ form_widget(form.deliveryType) }}
-                            {{ form_widget(form.paymentMethod) }}
-                            {{ form_widget(form.price) }}
 
                             {{ form_widget(form._token) }}
                             {{ form_end(form, {'render_rest': false}) }}
-                            {#<p>{{ 'features.description'|trans }}</p>#}
+                            {#<p>{{ 'features.description'|trans|raw }}</p>#}
                         </div>
                     </div>
                 </div>
@@ -244,9 +165,9 @@
                         <div class="mu-feature-area">
 
                             <div class="mu-title-area">
-                                <h2 class="mu-title">{{ 'features.header'|trans }}</h2>
+                                <h2 class="mu-title">{{ 'features.header'|trans|raw }}</h2>
                                 <span class="mu-title-dot"></span>
-                                {#<p>{{ 'features.description'|trans }}</p>#}
+                                {#<p>{{ 'features.description'|trans|raw }}</p>#}
                             </div>
 
                             <!-- Start Feature Content -->
@@ -265,8 +186,8 @@
                                                 <!-- Start single feature item -->
                                                 <div class="media">
                                                     <div class="media-body">
-                                                        <h3 class="media-heading">{{ ('features.feature'~i~'.header')|trans }}</h3>
-                                                        <p>{{ ('features.feature'~i~'.description')|trans }}</p>
+                                                        <h3 class="media-heading">{{ ('features.feature'~i~'.header')|trans|raw }}</h3>
+                                                        <p>{{ ('features.feature'~i~'.description')|trans|raw }}</p>
                                                     </div>
                                                 </div>
                                                 <!-- End single feature item -->
@@ -292,7 +213,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mu-video-area">
-                                <h2>{{ 'watch.video'|trans }}</h2>
+                                <h2>{{ 'watch.video'|trans|raw }}</h2>
                                 <a class="mu-video-play-btn" href="#"><i class="fa fa-play" aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -321,9 +242,9 @@
                         <div class="mu-apps-screenshot-area">
 
                             <div class="mu-title-area">
-                                <h2 class="mu-title">{{ 'galery.header'|trans }}</h2>
+                                <h2 class="mu-title">{{ 'galery.header'|trans|raw }}</h2>
                                 <span class="mu-title-dot"></span>
-                                <p>{{ 'galery.description'|trans }}</p>
+                                <p>{{ 'galery.description'|trans|raw }}</p>
                             </div>
 
 
@@ -334,7 +255,8 @@
 
                                     {% for i in 1..4 %}
                                         <div class="mu-single-screeshot">
-                                            <img style="width: 80%;" src="{{ asset('assets/images/screenshot/0'~i~'.jpg') }}"
+                                            <img style="width: 80%;"
+                                                 src="{{ asset('assets/images/screenshot/0'~i~'.jpg') }}"
                                                  alt="App screenshot img">
                                         </div>
                                     {% endfor %}
@@ -359,16 +281,16 @@
                         <div class="mu-download-area">
 
                             <div class="mu-title-area">
-                                <h2 class="mu-title">{{ 'description.header'|trans }}</h2>
+                                <h2 class="mu-title">{{ 'description.header'|trans|raw }}</h2>
                                 <span class="mu-title-dot"></span>
-                                <p>{{ 'description.description'|trans }}</p>
+                                <p>{{ 'description.description'|trans|raw }}</p>
                             </div>
 
 
                             <div class="mu-download-content">
                                 <a class="mu-apple-btn scroll-to-order" href="#">
                                     <div class="fa "></div>
-                                    <span>{{ 'order'|trans }}</span></a>
+                                    <span>{{ 'order'|trans|raw }}</span></a>
 
                             </div>
 
@@ -387,9 +309,9 @@
                 <div class="row ">
                     <div>
                         <div id="mu-opinions-block" class="mu-title-area" style="padding-top:70px">
-                            <h2 class="mu-title">{{ 'opinions.header'|trans }}</h2>
+                            <h2 class="mu-title">{{ 'opinions.header'|trans|raw }}</h2>
                             <span class="mu-title-dot"></span>
-                            <p>{{ 'opinions.description'|trans }}</p>
+                            <p>{{ 'opinions.description'|trans|raw }}</p>
                         </div>
                     </div>
                     <br>
@@ -463,9 +385,9 @@
                         <div class="mu-contact-area">
 
                             <div class="mu-title-area">
-                                <h2 class="mu-heading-title">{{ 'contact'|trans }}</h2>
+                                <h2 class="mu-heading-title">{{ 'contact'|trans|raw }}</h2>
                                 <span class="mu-title-dot"></span>
-                                <p>{{ 'contact.description'|trans }}</p>
+                                <p>{{ 'contact.description'|trans|raw }}</p>
                             </div>
 
 
@@ -482,21 +404,21 @@
                                                     class="mu-contact-form">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control"
-                                                           placeholder="{{ 'name'|trans }}" id="name"
+                                                           placeholder="{{ 'name'|trans|raw }}" id="name"
                                                            name="name" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="email" class="form-control"
-                                                           placeholder="{{ 'email'|trans }}"
+                                                           placeholder="{{ 'email'|trans|raw }}"
                                                            id="email" name="email" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" placeholder="{{ 'message'|trans }}"
+                                                    <textarea class="form-control" placeholder="{{ 'message'|trans|raw }}"
                                                               id="message"
                                                               name="message" required></textarea>
                                                 </div>
                                                 <button type="submit" class="mu-send-msg-btn">
-                                                    <span>{{ 'send'|trans }}</span>
+                                                    <span>{{ 'send'|trans|raw }}</span>
                                                 </button>
                                             </form>
                                         </div>
@@ -506,34 +428,47 @@
                                         <div class="mu-contact-right">
                                             <div class="mu-contact-right-single">
                                                 <div class="mu-icon"><i class="fa fa-map-marker"></i></div>
-                                                <p><strong>{{ 'location'|trans }}</strong></p>
-                                                <p>{{ 'location.description'|trans }}</p>
+                                                <p><strong>{{ 'location'|trans|raw }}</strong></p>
+                                                <p>{{ 'location.description'|trans|raw }}</p>
                                             </div>
 
                                             <div class="mu-contact-right-single">
                                                 <div class="mu-icon"><i class="fa fa-phone"></i></div>
-                                                <p><strong>{{ 'phone'|trans }}</strong></p>
-                                                <p>{{ 'phone.number1'|trans }}</p>
-                                                {#<p>{{ 'phone.number2'|trans }}</p>#}
+                                                <p><strong>{{ 'phone'|trans|raw }}</strong></p>
+                                                <p>{{ 'phone.number1'|trans|raw }}</p>
+                                                {#<p>{{ 'phone.number2'|trans|raw }}</p>#}
                                             </div>
 
                                             <div class="mu-contact-right-single">
                                                 <div class="mu-icon"><i class="fa fa-envelope"></i></div>
-                                                <p><strong>{{ 'email'|trans }}</strong></p>
-                                                <p>{{ 'email1'|trans }}</p>
-                                                {#<p>{{ 'email2'|trans }}</p>#}
+                                                <p><strong>{{ 'email'|trans|raw }}</strong></p>
+                                                <p>{{ 'email1'|trans|raw }}</p>
+                                                {#<p>{{ 'email2'|trans|raw }}</p>#}
                                             </div>
 
                                             <div class="mu-contact-right-single">
                                                 <div class="mu-social-media">
-                                                    <a href="{{ 'contact.facebook'|trans }}"><i
+                                                    <a href="{{ 'contact.facebook'|trans|raw }}"><i
                                                                 class="fa fa-facebook"></i></a>
-                                                    <a href="{{ 'contact.instagram'|trans }}"><i
+                                                    <a href="{{ 'contact.instagram'|trans|raw }}"><i
                                                                 class="fa fa-instagram"></i></a>
                                                     {#<a href="#"><i class="fa fa-google-plus"></i></a>#}
                                                     {#<a href="#"><i class="fa fa-linkedin"></i></a>#}
                                                     {#<a href="#"><i class="fa fa-youtube"></i></a>#}
                                                 </div>
+                                            </div>
+
+                                            <br>
+                                            {#vk share button#}
+                                            <script type="text/javascript">
+                                                document.write(VK.Share.button('http://www.inplay.com.ua'));
+                                            </script>
+                                            <br>
+                                            {#fb share button#}
+                                            <div class="fb-like" data-href="http://inplay.com.ua"
+                                                 data-width="100" data-layout="standard" data-action="like"
+                                                 data-size="small" data-show-faces="true" data-share="true">
+
                                             </div>
 
                                         </div>
@@ -552,6 +487,7 @@
 
     </main>
 
+
     <!-- End main content -->
 
 
@@ -559,7 +495,7 @@
     <footer id="mu-footer" role="contentinfo">
         {#<div class="container">#}
         <div class="mu-footer-area">
-            <p class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>. All
+            <p style="font-size: 8px;" class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>. All
                 right reserved.</p>
         </div>
         {#</div>#}
@@ -568,9 +504,7 @@
     <!-- End footer -->
 
 
-    <script>
-        var locale = "{{ app.request.locale }}";
-    </script>
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -579,8 +513,6 @@
     <!-- Slick slider -->
     <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/{{ app.request.locale }}.js"></script>
 
     <!-- Ajax contact form  -->
     <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
@@ -596,6 +528,8 @@
 
 {% block stylesheets %}
 
+    <script type="text/javascript" src="https://vk.com/js/api/share.js?93" charset="windows-1251"></script>
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="{{ asset('assets/images/favicon.ico') }}"/>
     <!-- Font Awesome -->
@@ -606,18 +540,6 @@
     <link href="{{ asset('assets/css/slick.css') }}" rel="stylesheet">
     <!-- Theme color -->
     <link id="switcher" href="{{ asset('assets/css/theme-color/default-theme.css') }}" rel="stylesheet">
-
-
-
-
-
-
-    {#----  select 2  ---#}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
-    {#---- END select 2  ---#}
-    {#-- select2 - bootstrap css#}
-    <link href="{{ asset('assets/select2-bootstrap/dist/select2-bootstrap.css') }}" rel="stylesheet">
-    {#--END select2 - bootstrap css#}
 
 
     <!-- Main Style -->
@@ -637,11 +559,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style>
-        .select2 {
-            width: 100% !important;
-        }
-    </style>
+
 
 
 {% endblock %}

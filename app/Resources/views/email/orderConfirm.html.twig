@@ -68,7 +68,7 @@
 <body>
 <div id="container">
     <div id="head">
-        <a href="http://localhost:8000/{{ path('homepage') }}">
+        <a href="http://inplay.com.ua">
             <h1>
                 Іграшка Toroflux
             </h1>
@@ -106,14 +106,24 @@
                     {{ ordering.quantity }}
                 </td>
             </tr>
-            <tr>
-                <th>
-                    {{ 'payment_method'|trans|raw }}
-                </th>
-                <td>
-                    {{ ("payment_method."~ordering.paymentMethod)|trans|raw }}
-                </td>
-            </tr>
+            {% if ordering.deliveryType == 'by_post' %}
+                <tr>
+                    <th>
+                        {{ 'payment_method'|trans|raw }}
+                    </th>
+                    <td>
+                        {{ ("payment_method."~ordering.paymentMethod)|trans|raw }} <b>{{ ordering.price }} UAH</b>
+                        {% if ordering.paymentMethod == 'by_card' %}
+                            <br>
+                            {{ 'your.order.will.be.started.right.after.you.purchase.money.on.card'|trans|raw }}
+                            <br>
+                            {{ 'credit_card.number'|trans|raw }}
+                            <br>
+                            {{ 'credit_card.description'|trans|raw }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
             <tr>
                 <th>
                     {{ 'delivery.type'|trans|raw }}
@@ -126,21 +136,6 @@
                     {% endif %}
                 </td>
             </tr>
-
-            {% if ordering.deliveryType == "by_post" %}
-                <tr>
-                    <th>
-                        {{ 'price.description'|trans|raw }}
-                    </th>
-                    <td>
-                        {{ 'price.for.delivery.service'|trans|raw }} : 35 UAH
-                        {% if ordering.paymentMethod =="after_delivery" %}
-                            <br>
-                            {{ 'price.for.payment.after_delivery'|trans }} : 30 UAH
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endif %}
             <tr>
                 <th>
                     {{ 'total.price'|trans|raw }}
@@ -149,34 +144,28 @@
                     <b style="font-size: large"> {{ ordering.price }} UAH </b>
                 </td>
             </tr>
+            {% if ordering.deliveryType == "by_post" %}
+                <tr>
+                    <th>
+                        {{ 'price.description'|trans|raw }}
+                    </th>
+                    <td>
+                        {{ 'price.for.delivery.service'|trans|raw }}
+                        {% if ordering.paymentMethod =="after_delivery" %}
+                            <br>
+                            {{ 'price.for.payment.after_delivery'|trans|raw }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+
             </tbody>
         </table>
         <br>
         <hr>
         <br>
         <div class="center">
-            {% if ordering.deliveryType == "self_checkout" %}
-                {{ 'you.can.take.your.order.from'|trans|raw }}
-                {{ 'location.description'|trans|raw }}
-                <br>
-                <br>
-                <hr>
-                <br>
-            {% endif %}
-            {% if ordering.paymentMethod=="by_card" %}
-                {{ 'your.order.will.be.started.right.after.you.purchase.money.on.card'|trans|raw }}
-                <br>
-                {{ 'credit_card.number'|trans|raw }}
-                <br>
-                {{ 'credit_card.description'|trans|raw }}
-                <br>
-                <br>
-                <hr>
-                <br>
-            {% endif %}
-
             {{ 'best.regards'|trans|raw }}
-
         </div>
     </div>
     <div id="footer">
