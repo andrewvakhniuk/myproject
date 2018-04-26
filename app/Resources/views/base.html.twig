@@ -86,10 +86,6 @@
 
                         <li><a class="scroll-to-order" data-block="order" href="#">{{ 'order'|trans }}</a></li>
                         <li><a class="scroll-to-block" data-block="mu-feature" href="#">{{ 'features'|trans }}</a></li>
-                        {#<li><a class="scroll-to-block" data-block="mu-video" href="#">{{ 'video'|trans }}</a></li>#}
-                        {#<li><a class="scroll-to-block" data-block="mu-apps-screenshot" href="#">{{ 'galery'|trans }}</a>#}
-                        {#</li>#}
-                        {#<li><a class="scroll-to-block" data-block="mu-download" href="#">{{ 'description'|trans }}</a></li>#}
                         <li><a class="scroll-to-block" data-block="mu-opinions-block"
                                href="#">{{ 'opinions'|trans }}</a>
                         </li>
@@ -100,25 +96,10 @@
                             {% include 'locale.html.twig' %}
                         </li>
 
-                        {#<li style="display: none;" >#}
-                        {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-
-                        {#<a style="color:black;"  href="{{ path('fos_user_security_logout') }}">#}
-                        {#<span class="glyphicon glyphicon-log-out"> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</span>#}
-                        {#</a>#}
-
-                        {#{% else %}#}
-                        {#<a style="color:black;"  href="{{ path('fos_user_security_login') }}">#}
-                        {#<span class="glyphicon glyphicon-log-in"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</span>#}
-                        {#</a>#}
-                        {#{% endif %}#}
-                        {#</li>#}
-
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </nav>
-
         {#-- END navigation bar --#}
 
 {% elseif is_granted('ROLE_ADMIN') %}

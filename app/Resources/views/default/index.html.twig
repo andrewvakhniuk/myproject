@@ -2,40 +2,18 @@
 
 {% block outerbody %}
 
-    <div id="fb-root"></div>
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v2.12&appId=1062385993857234&autoLogAppEvents=1';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-
     <!-- Start Header -->
     <header id="mu-header" class="" role="banner">
         <div id="header-video"></div>
-        {#<iframe id="header-video" class="mu-video-iframe" width="854" height="480"#}
-        {#src="https://www.youtube.com/embed/QuUZLe5BWXk?autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&modestbranding=1" frameborder="0" allowfullscreen volume="0"></iframe>#}
         <div class="mu-header-overlay">
             <div>
                 <div class="mu-header-area">
 
                     <!-- Start header featured area -->
                     <div class="mu-header-featured-area">
-                        {#<div class="mu-header-featured-img">#}
-                        {#<img src="{{ asset('assets/images/iphone.png') }}" alt="iphone image">#}
-                        {#</div>#}
 
                         <div class="mu-header-featured-content">
                             <h1>{{ 'header.header'|trans|raw }}</h1>
-                            {#<p>{{ 'header.body'|trans|raw }}</p>#}
-
-                            {#<div class="mu-app-download-area">#}
-                            {#<h4>{{ 'make.an.order'|trans|raw }}</h4>#}
-                            {#<a class="mu-apple-btn scroll-to-order" href="#"><span>{{ 'order'|trans|raw }}</span></a>#}
-                            {#</div>#}
 
                         </div>
                     </div>
@@ -51,23 +29,7 @@
     <button class="mu-menu-btn scroll-to-order">
         {{ 'order'|trans|raw }}
     </button>
-    {#<div class="mu-menu-full-overlay">#}
-    {#<div class="mu-menu-full-overlay-inner">#}
-    {#<a class="mu-menu-close-btn" href="#"><span class="mu-line"></span></a>#}
-    {#<nav class="mu-menu" role="navigation">#}
-    {#<ul>#}
-    {#<li><a href="#mu-header">Header</a></li>#}
-    {#<li><a href="#mu-feature">App Feature</a></li>#}
-    {#<li><a href="#mu-video">Promo Video</a></li>#}
-    {#<li><a href="#mu-apps-screenshot">Apps Screenshot</a></li>#}
-    {#<li><a href="#mu-download">Download</a></li>#}
-    {#<li><a href="#mu-faq">FAQ</a></li>#}
-    {#<li><a href="#mu-contact">Get In Touch</a></li>#}
-    {#</ul>#}
-    {#</nav>#}
-    {#</div>#}
-    {#</div>#}
-    <!-- End Menu -->
+
 
 
 
@@ -119,10 +81,11 @@
                             </div>
                             {#//--price#}
 
-                            <div style="text-align: center;margin: auto;width:100%; margin:10px;" class="form-group row">
-                                <div  class="price col-sm-2 col-form-label"
+                            <div style="text-align: center;margin: auto;width:100%; margin:10px;"
+                                 class="form-group row">
+                                <div class="price col-sm-2 col-form-label"
                                      style="text-align: center;display: inline-flex;margin:5px; white-space: nowrap; width:100%;">
-                                    <h4 id="price"  style="text-align: center;margin: auto;"></h4>
+                                    <h4 id="price" style="text-align: center;margin: auto;"></h4>
                                 </div>
                             </div>
 
@@ -130,7 +93,8 @@
                             {{ form_widget(form.paymentMethod) }}
 
                             <div class="form-group row">
-                                <button style="width:80%;background-color:#c82333;color:white;" id="submit-order-button" class="btn btn-danger btn-lg">
+                                <button style="width:80%;background-color:#c82333;color:white;" id="submit-order-button"
+                                        class="btn btn-danger btn-lg">
                                     {{ 'order'|trans|raw }}
                                 </button>
                                 {#<div style="margin:auto;" class="submit-button round col-sm-10">#}
@@ -413,7 +377,8 @@
                                                            id="email" name="email" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" placeholder="{{ 'message'|trans|raw }}"
+                                                    <textarea class="form-control"
+                                                              placeholder="{{ 'message'|trans|raw }}"
                                                               id="message"
                                                               name="message" required></textarea>
                                                 </div>
@@ -452,54 +417,28 @@
                                                                 class="fa fa-facebook"></i></a>
                                                     <a href="{{ 'contact.instagram'|trans|raw }}"><i
                                                                 class="fa fa-instagram"></i></a>
-                                                    {#<a href="#"><i class="fa fa-google-plus"></i></a>#}
-                                                    {#<a href="#"><i class="fa fa-linkedin"></i></a>#}
-                                                    {#<a href="#"><i class="fa fa-youtube"></i></a>#}
                                                 </div>
                                             </div>
-
-                                            <br>
-                                            {#vk share button#}
-                                            <script type="text/javascript">
-                                                document.write(VK.Share.button('http://www.inplay.com.ua'));
-                                            </script>
-                                            <br>
-                                            {#fb share button#}
-                                            <div class="fb-like" data-href="http://inplay.com.ua"
-                                                 data-width="100" data-layout="standard" data-action="like"
-                                                 data-size="small" data-show-faces="true" data-share="true">
-
-                                            </div>
-
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <!-- End Contact Content -->
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- End Contact -->
-
     </main>
-
-
     <!-- End main content -->
-
 
     <!-- Start footer -->
     <footer id="mu-footer" role="contentinfo">
-        {#<div class="container">#}
         <div class="mu-footer-area">
-            <p style="font-size: 8px;" class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>. All
-                right reserved.</p>
+            <p style="font-size: 8px;" class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>.
+                All right reserved.</p>
         </div>
-        {#</div>#}
-
     </footer>
     <!-- End footer -->
 
@@ -528,7 +467,7 @@
 
 {% block stylesheets %}
 
-    <script type="text/javascript" src="https://vk.com/js/api/share.js?93" charset="windows-1251"></script>
+    {#<script type="text/javascript" src="https://vk.com/js/api/share.js?93" charset="windows-1251"></script>#}
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="{{ asset('assets/images/favicon.ico') }}"/>
