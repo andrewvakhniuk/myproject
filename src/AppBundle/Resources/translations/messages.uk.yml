@@ -21,7 +21,7 @@ quantity: Кількість
 phone: Телефон
 payment_method: Оплата
 payment_method.by_card: Переказ на карту ПриватБанку
-payment_method.after_delivery: Оплата при отримані товару
+payment_method.after_delivery: Оплата при отримані товару на пошті
 delivery.type: Доставка
 delivery.self_checkout: Самовивіз з м.Київ, м.Лівобережна та м.Васильківська
 delivery.by_post: Нова Пошта
@@ -97,8 +97,8 @@ greetings: Дякуємо, що придбали Торофлакс! <b style="f
 your.order.details: Деталі вашого замовлення:
 order.id: Номер замовлення
 price.description: Додаткові послуги
-price.for.delivery.service: ціна за доставку <b> 35 UAH </b>
-price.for.payment.after_delivery: ціна за послугу накладний платіж <b> 30 UAH </b>
+price.for.delivery.service: ціна за доставку <b>+ 35 UAH </b>
+price.for.payment.after_delivery: ціна за послугу накладний платіж <b>+ 30 UAH </b>
 total.price: Сума до оплати за товар
 your.order.will.be.started.right.after.you.purchase.money.on.card: <b style="color:red;" > Ваше замовлення буде оброблене після оплати товару </b>
 credit_card.number: <b> 5168 7422 1437 6968 </b>
