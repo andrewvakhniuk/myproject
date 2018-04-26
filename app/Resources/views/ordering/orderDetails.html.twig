@@ -122,8 +122,9 @@
                             {{ 'payment_method'|trans|raw }}
                         </th>
                         <td>
-                            {{ ("payment_method."~ordering.paymentMethod)|trans|raw }} <b>{{ ordering.price }} UAH</b>
+                            {{ ("payment_method."~ordering.paymentMethod)|trans|raw }}
                             {% if ordering.paymentMethod == 'by_card' %}
+                                <b>{{ ordering.price }} UAH</b>
                                 <br>
                                 {{ 'your.order.will.be.started.right.after.you.purchase.money.on.card'|trans|raw }}
                                 <br>
