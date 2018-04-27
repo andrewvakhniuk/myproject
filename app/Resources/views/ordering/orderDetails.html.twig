@@ -242,8 +242,8 @@
                 var textArea = document.createElement("textarea");
                 textArea.value = text;
                 document.body.appendChild(textArea);
+                $(textArea).onfocus(blur());
                 textArea.focus();
-                blur();
                 textArea.select();
 
                 try {
