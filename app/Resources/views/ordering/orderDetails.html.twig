@@ -128,7 +128,10 @@
                                 <br>
                                 {{ 'your.order.will.be.started.right.after.you.purchase.money.on.card'|trans|raw }}
                                 <br>
-                                {{ 'credit_card.number'|trans|raw }}
+                                <div style="display:inline-flex">
+                                    <p>{{ 'credit_card.number'|trans|raw }}</p>
+                                    <button style="height:35px;" id="credit-card-number-copy-button" class="btn btn-primary btn-sm">{{ 'copy'|trans }}</button>
+                                </div>
                                 <br>
                                 {{ 'credit_card.description'|trans|raw }}
                             {% endif %}
@@ -227,6 +230,49 @@
 
     <script>
         $('#container').css({'min-height': window.innerHeight});
+
+
+        // -- Start copy text to clipboard
+
+        var copyCreditCardNumberBtn = document.querySelector('#credit-card-number-copy-button');
+        var $creditCardNumber = $('#credit-card-number');
+
+        if(copyCreditCardNumberBtn != null) {
+            function fallbackCopyTextToClipboard(text) {
+                var textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    var successful = document.execCommand('copy');
+                    var msg = successful ? 'successful' : 'unsuccessful';
+                    console.log('Fallback: Copying text command was ' + msg);
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+
+                document.body.removeChild(textArea);
+            }
+
+            function copyTextToClipboard(text) {
+                if (!navigator.clipboard) {
+                    fallbackCopyTextToClipboard(text);
+                    return;
+                }
+                navigator.clipboard.writeText(text).then(function () {
+                    console.log('Async: Copying to clipboard was successful!');
+                }, function (err) {
+                    console.error('Async: Could not copy text: ', err);
+                });
+            }
+
+            copyCreditCardNumberBtn.addEventListener('click', function (event) {
+                copyTextToClipboard($creditCardNumber.html().replace(/\s+/g, ''));
+            });
+        }
+        // -- Stop copy text to clipboard
 
     </script>
 {% endblock %}
