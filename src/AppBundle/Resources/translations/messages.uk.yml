@@ -93,12 +93,12 @@ send: Надіслати
 
 # -------- order details
 order.confiramtion: Оберіть метод доставки.
-greetings: Дякуємо, що придбали Торофлакс! <b style="font-size:15px">Ми зв'яжемось з вами протягом декількох годин.</b> Будь ласка, ознайомтесь з деталями вашого замовлення.
+greetings: Дякуємо, що придбали Торофлакс! <b style="font-size:15px">Ми сконтактуємось з Вами протягом декількох годин.</b> Будь ласка, ознайомтесь з деталями вашого замовлення.
 your.order.details: Деталі вашого замовлення:
 order.id: Номер замовлення
 price.description: Додаткові послуги
-price.for.delivery.service: ціна за доставку <b>+ 35 UAH </b>
-price.for.payment.after_delivery: ціна за послугу накладний платіж <b>+ 30 UAH </b>
+price.for.delivery.service:  ціна за доставку <b> 35 UAH </b>
+price.for.payment.after_delivery:  ціна за послугу накладний платіж <b> 25-30 UAH </b>
 total.price: Сума до оплати за товар
 your.order.will.be.started.right.after.you.purchase.money.on.card: <b style="color:red;" > Ваше замовлення буде оброблене після оплати товару </b>
 credit_card.number: <b> 5168 7422 1437 6968 </b>
@@ -108,5 +108,6 @@ you.can.take.your.order.from: Де ви можете забрати товар:
 send.details.to.email: Надіслати деталі замовлення на E-mail
 save: Зберегти замовлення
 cancel: Відмінити
+payment.at.the.post: Оплата за додаткові послуги при отриманні товару на пошті.
 #email
 email.order.details: Торофлакс.

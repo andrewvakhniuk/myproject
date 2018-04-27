@@ -166,6 +166,8 @@
                                 <br>
                                 {{ 'price.for.payment.after_delivery'|trans|raw }}
                             {% endif %}
+                            <br>
+                            {{ 'payment.at.the.post'|trans|raw }}
                         </td>
                     </tr>
                 {% endif %}
@@ -181,7 +183,7 @@
 
         </div>
         <div style="margin:10px;margin-top:30px;" class="center">
-            <button id="trigger-modal-button" style="width:80%;margin:0 auto;" class="btn btn-default btn-lg" data-toggle="modal" data-target="#my-modal">{{ 'save'|trans|raw }}</button>
+            <button id="trigger-modal-button" style="width:80%;margin:0 auto;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#my-modal">{{ 'save'|trans|raw }}</button>
         </div>
 
 
@@ -226,10 +228,5 @@
     <script>
         $('#container').css({'min-height': window.innerHeight});
 
-        // var $triggerModalButton = $('#trigger-modal-button');
-        // var $modal = $('#my-modal');
-        // $triggerModalButton.onclick(function () {
-        //    $modal.modal('show');
-        // });
     </script>
 {% endblock %}
