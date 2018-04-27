@@ -49,45 +49,14 @@
                 </div>
                 {#----- END  delivery type --- #}
 
-                {#// ---  address fields #}
 
-
+                {#// --- STAT  address fields #}
 
                 {#--- by post fileds#}
 
                 <div class="delivery-fields" id="by_post_fields" style="display:none">
 
 
-                    {#----- START  payment method --- #}
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label col-form-label-sm">{{ 'payment_method'|trans|raw }}</label>
-                        <div class="col-sm-10">
-                            <div id="payment-method-radio-container" class="funkyradio">
-                                <div class="funkyradio-primary">
-                                    <input value="by_card" type="radio" name="radio-payment-method" id="by_card"
-                                           checked/>
-                                    <label for="by_card">
-                                        <p>
-                                        {{ 'payment_method.by_card'|trans|raw }}
-                                        </p>
-                                    </label>
-                                </div>
-                                <div class="funkyradio-primary">
-                                    <input value="after_delivery" type="radio" name="radio-payment-method"
-                                           id="after_delivery"/>
-                                    <label for="after_delivery">
-                                        <p>
-                                        {{ 'payment_method.after_delivery'|trans|raw }}
-                                        ({{ 'price.for.payment.after_delivery'|trans|raw }})
-                                        </p>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    {#----- END  payment method --- #}
                     <div class="form-group row">
                         {{ form_label(form.surname,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
                         <div class="col-sm-10 ">
@@ -114,16 +83,39 @@
                                     placeholder="post.office" class="form-control"></select>
                         </div>
                     </div>
+                    <hr>
+                    {#----- START  payment method --- #}
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label col-form-label-sm">{{ 'payment_method'|trans|raw }}</label>
+                        <div class="col-sm-10">
+                            <div id="payment-method-radio-container" class="funkyradio">
+                                <div class="funkyradio-primary">
+                                    <input value="by_card" type="radio" name="radio-payment-method" id="by_card"
+                                           checked/>
+                                    <label for="by_card">
+                                        <p>
+                                            {{ 'payment_method.by_card'|trans|raw }}
+                                        </p>
+                                    </label>
+                                </div>
+                                <div class="funkyradio-primary">
+                                    <input value="after_delivery" type="radio" name="radio-payment-method"
+                                           id="after_delivery"/>
+                                    <label for="after_delivery">
+                                        <p>
+                                            {{ 'payment_method.after_delivery'|trans|raw }}
+                                            ({{ 'price.for.payment.after_delivery'|trans|raw }})
+                                        </p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {#----- END  payment method --- #}
                 </div>
                 {##  END --- by post fileds#}
-
-                {#----self-checkout#}
-                {#<div class="form-group row delivery-fields" id="self_checkout_fields"#}
-                     {#style="display:none;"#}
-                {#>#}
-                    {#<p style="margin:0 auto;">{{ 'delivery.self_checkout.description'|trans|raw }} {{ 'location.description'|trans|raw }}#}
-                    {#</p>#}
-                {#</div>#}
 
                 {#  -- END address fields#}
                 <hr>
@@ -154,7 +146,7 @@
     </div>
 
     <script>
-        $('.my-container').css({'min-height': window.innerHeight })
+        $('.my-container').css({'min-height': window.innerHeight });
         // my code
 
         //--- START variables
@@ -171,13 +163,13 @@
         var $surnameField = $('#appbundle_ordering_surname');
 
         var discountPrice = 63;
-        var afterDeliveryPaymentPrice = 30;
-        var postServicePrice = 35;
+        // var afterDeliveryPaymentPrice = 30;
+        // var postServicePrice = 35;
         var productPrice = 189;
 
-        function countDiscount() {
-            return (discountPrice / (discountPrice + productPrice)) * 100;
-        }
+        // function countDiscount() {
+        //     return (discountPrice / (discountPrice + productPrice)) * 100;
+        // }
 
         //make theme of select2 bootstrap
         $.fn.select2.defaults.set("theme", "bootstrap");
@@ -218,7 +210,7 @@
                     "url": novaposhtaUrl,
                     "method": "POST",
                     "headers": {
-                        "content-type": "application/json",
+                        "content-type": "application/json"
                     },
                     "processData": false,
 
@@ -400,9 +392,9 @@
         }
 
         .my-container {
-            -webkit-box-shadow:  0px 0px 10px 3px grey; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-            -moz-box-shadow: 0px 0px 10px 3px grey;/* Firefox 3.5 - 3.6 */
-            box-shadow: 0px 0px 10px 3px grey;
+            -webkit-box-shadow:  0 0 10px 3px grey; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow: 0 0 10px 3px grey;/* Firefox 3.5 - 3.6 */
+            box-shadow: 0 0 10px 3px grey;
             width: 800px;
             background-color:white;
 

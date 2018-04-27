@@ -19,9 +19,9 @@ surname: Прізвище
 email: E-mail
 quantity: Кількість
 phone: Телефон
-payment_method: Оплата
+payment_method: Метод оплати
 payment_method.by_card: Переказ на карту ПриватБанку
-payment_method.after_delivery: Оплата при отримані товару на пошті
+payment_method.after_delivery: Накладний платіж- оплата при отримані товару на пошті
 delivery.type: Доставка
 delivery.self_checkout: Самовивіз з м.Київ, м.Лівобережна та м.Васильківська
 delivery.by_post: Нова Пошта
