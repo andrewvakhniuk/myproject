@@ -29,10 +29,10 @@ framework:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
         save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
-#        60 min for cookies life
-        cookie_lifetime: 1800
-#        user will be logged out after 30 minutes of inactivity
-        gc_maxlifetime: 1800
+#        60 min for cookies life 24 hours
+        cookie_lifetime: 70000
+#        user will be logged out after 2 hours inactivity
+        gc_maxlifetime: 7200
     fragments: ~
     http_method_override: true
     assets: ~
