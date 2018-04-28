@@ -23,7 +23,7 @@ class OrderingController extends Controller
             ->select('
             orders.id, 
             orders.phone,
-             CONCAT(orders.name,\' \',orders.surname) as name,
+             CASE WHEN (orders.surname IS NULL) THEN orders.name ELSE CONCAT(orders.name,\' \',orders.surname)  END  as name,
               orders.email,
               DATE_FORMAT( orders.date, \'%Y-%M-%d %H:%i:%s\' )as date,
                orders.status,
