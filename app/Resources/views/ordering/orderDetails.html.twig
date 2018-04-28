@@ -241,6 +241,11 @@
             function fallbackCopyTextToClipboard(text) {
                 var textArea = document.createElement("textarea");
                 textArea.value = text;
+                $(textArea).css({
+                    position: "absolute",
+                    left:     "-1000px",
+                    top:      $(copyCreditCardNumberBtn).offset().top+"px"
+                });
                 document.body.appendChild(textArea);
                 textArea.focus();
                 textArea.select();

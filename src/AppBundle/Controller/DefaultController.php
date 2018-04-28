@@ -45,7 +45,8 @@ class DefaultController extends Controller
             return $this->forward('AppBundle:Default:orderingFinish', [
                 'name' => $ordering->getName(),
                 'phone' => $ordering->getPhone(),
-                'quantity' => $ordering->getQuantity()
+                'quantity' => $ordering->getQuantity(),
+                'price' => $ordering->getPrice()
             ]);
 
         }
@@ -58,7 +59,7 @@ class DefaultController extends Controller
         ]);
     }
 
-    public function orderingFinishAction($name, $phone, $quantity)
+    public function orderingFinishAction($name, $phone, $quantity,$price)
     {
 
         //  send email to admin
@@ -78,9 +79,9 @@ class DefaultController extends Controller
         $ordering->setName($name);
         $ordering->setPhone($phone);
         $ordering->setQuantity($quantity);
+        $ordering->setPrice($price);
         $ordering->setDeliveryType('self_checkout');
         $ordering->setPaymentMethod('by_card');
-        $ordering->setPrice($ordering->getQuantity() * 189);
 
         $form = $this->createForm('AppBundle\Form\FinishOrderType', $ordering, [
             'method' => 'POST',
