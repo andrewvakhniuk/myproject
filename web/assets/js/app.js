@@ -66,23 +66,25 @@ $(function () {
     var $phoneField = $('#appbundle_ordering_phone');
     var $priceHiddenField = $('#appbundle_ordering_price');
 
-    var discountPrice = 63;
+    var discountPercent = 49;//integer
     var afterDeliveryPaymentPrice = 30;
     var postServicePrice = 35;
-    var productPrice = 189;
+    var productPrice = 169;
     function countDiscount(){
-        return (discountPrice/(discountPrice+productPrice))*100;
+        return Math.round( productPrice*discountPercent/(100-discountPercent));
     }
-
+    function countPriceWithoutDiscount(){
+        return countDiscount()+productPrice;
+    }
     var $price = $('#price');
 
-    $('#order-header').append('<br><b>- '+countDiscount()+' %  </b><br><strike style="color:red;">'+ (productPrice + discountPrice ) +' UAH</strike><b> '+ productPrice +' UAH</b>');
+    $('#order-header').append('<br><b style="color:red;">- '+discountPercent+' %  </b><br><strike style="color:red;">'+ countPriceWithoutDiscount() +' UAH</strike><b> '+ productPrice +' UAH</b>');
     //--- END variables
     //count price
     function countPrice() {
 
         var total =  productPrice * $quantityField.val();
-        var totalWithoutDiscount = (productPrice + discountPrice) * $quantityField.val();
+        var totalWithoutDiscount = countPriceWithoutDiscount() * $quantityField.val();
 
         $price.html('<strike> '+totalWithoutDiscount+' UAH  </strike><b> '+total+' UAH </b>');
         $priceHiddenField.val(total);
