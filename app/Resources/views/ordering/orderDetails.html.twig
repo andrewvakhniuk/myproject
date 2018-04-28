@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+
     <style>
         body{
             background-color: lightgray;
@@ -130,7 +133,7 @@
                                 <br>
                                 <div style="display:inline-flex">
                                     <p>{{ 'credit_card.number'|trans|raw }}</p>
-                                    <button style="height:35px;" id="credit-card-number-copy-button" class="btn btn-primary btn-sm">{{ 'copy'|trans }}</button>
+                                    <button style="height:35px;" id="credit-card-number-copy-button" class="btn btn-primary btn-sm">{{ 'copy'|trans|raw }}</button>
                                 </div>
                                 <br>
                                 {{ 'credit_card.description'|trans|raw }}

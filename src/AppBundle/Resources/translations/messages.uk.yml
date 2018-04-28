@@ -109,5 +109,6 @@ send.details.to.email: Надіслати деталі замовлення на
 save: Зберегти замовлення
 cancel: Відмінити
 payment.at.the.post: Оплата за додаткові послуги при отриманні товару на пошті.
+copy: <i style="width:25px;" class="fa fa-copy"></i>
 #email
 email.order.details: Торофлакс.
