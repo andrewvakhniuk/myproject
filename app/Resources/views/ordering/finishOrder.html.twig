@@ -225,7 +225,9 @@
                         if (data.success === true) {
                             var result = data.data[0].Addresses.map(function (address) {
                                 //MainDescription is city name
-                                return {id: address.MainDescription, text: address.MainDescription};
+                                var region = address.Region === "" ? "" : ", р-н  "+address.Region;
+                                var area = address.Area === "" ? "": ", обл. "+address.Area;
+                                return {id: address.MainDescription, text:address.SettlementTypeCode +" "+ address.MainDescription+area+region};
                             });
                             return {results: result};
                         } else {

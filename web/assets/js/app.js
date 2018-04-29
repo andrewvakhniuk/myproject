@@ -54,22 +54,22 @@ $(function () {
     //--- START variables
     var $orderForm = $('#order-form');
     var $submitOrderButton = $('#submit-order-button');
-    var $cityField = $('#appbundle_ordering_city');
-    var $postOffice = $('#appbundle_ordering_postOffice');
-    var $deliveryTypeHiddenField = $('#appbundle_ordering_deliveryType');  // 3 types : by_post/self_checkout/by_post_address
-    var $deliveryTypeRadio = $('#delivery-type-radio');
+    // var $cityField = $('#appbundle_ordering_city');
+    // var $postOffice = $('#appbundle_ordering_postOffice');
+    // var $deliveryTypeHiddenField = $('#appbundle_ordering_deliveryType');  // 3 types : by_post/self_checkout/by_post_address
+    // var $deliveryTypeRadio = $('#delivery-type-radio');
     //select post & location description divs
-    var $deliveryFields = $('.delivery-fields');
-    var $paymentMethodHiddenField = $('#appbundle_ordering_paymentMethod');
-    var $paymentMethodRadio = $('#payment-method-radio-container');
+    // var $deliveryFields = $('.delivery-fields');
+    // var $paymentMethodHiddenField = $('#appbundle_ordering_paymentMethod');
+    // var $paymentMethodRadio = $('#payment-method-radio-container');
     var $quantityField = $('#appbundle_ordering_quantity');
     var $phoneField = $('#appbundle_ordering_phone');
     var $priceHiddenField = $('#appbundle_ordering_price');
 
     var discountPercent = 49;//integer
-    var afterDeliveryPaymentPrice = 30;
-    var postServicePrice = 35;
-    var productPrice = 169;
+    // var afterDeliveryPaymentPrice = 30;
+    // var postServicePrice = 35;
+    var productPrice = 249;
     function countDiscount(){
         return Math.round( productPrice*discountPercent/(100-discountPercent));
     }
@@ -78,7 +78,7 @@ $(function () {
     }
     var $price = $('#price');
 
-    $('#order-header').append('<br><b style="color:red;">- '+discountPercent+' %  </b><br><strike style="color:red;">'+ countPriceWithoutDiscount() +' UAH</strike><b> '+ productPrice +' UAH</b>');
+    $('#order-header').append('<br><b style="color:red;">- '+discountPercent+' %  </b><strike style="font-size: 18px">'+ countPriceWithoutDiscount() +' грн</strike><b style="color:red;"> '+ productPrice +' грн</b>');
     //--- END variables
     //count price
     function countPrice() {
@@ -86,7 +86,7 @@ $(function () {
         var total =  productPrice * $quantityField.val();
         var totalWithoutDiscount = countPriceWithoutDiscount() * $quantityField.val();
 
-        $price.html('<strike> '+totalWithoutDiscount+' UAH  </strike><b> '+total+' UAH </b>');
+        $price.html('<strike style="font-size: 17px"> '+totalWithoutDiscount+' грн  </strike><b style="color:red;"> '+total+' грн </b>');
         $priceHiddenField.val(total);
 
         return total;

@@ -1,24 +1,37 @@
 .navbar {
-    min-height: 70px;
-}
+    height: 55px;
 
+}
+.navbar-inverse{
+    background-color: #007bff;
+}
 .navbar-brand {
-    padding: 0 15px;
+    padding: 0 10px;
     height: 70px;
     line-height: 70px;
+    color:white;
+
 }
 
 .navbar-toggle {
     /* (70px - button height 34px) / 2 = 23px */
-    margin-top: 18px;
+    margin-top: 15px;
     padding: 7px 8px !important;
 }
 
 @media (min-width: 768px) {
     .navbar-nav > li > a {
         /* (70px - line-height of 27px) / 2 = 26.5px */
-        padding-top: 20.5px;
+        padding-top: 15.5px;
         padding-bottom: 20.5px;
         line-height: 21px;
+        color:white;
+
     }
+}
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
 }

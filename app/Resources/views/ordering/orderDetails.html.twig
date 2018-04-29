@@ -127,7 +127,7 @@
                         <td>
                             {{ ("payment_method."~ordering.paymentMethod)|trans|raw }}
                             {% if ordering.paymentMethod == 'by_card' %}
-                                <b>{{ ordering.price }} UAH</b>
+                                <b>{{ ordering.price }} грн</b>
                                 <br>
                                 {{ 'your.order.will.be.started.right.after.you.purchase.money.on.card'|trans|raw }}
                                 <br>
@@ -158,7 +158,7 @@
                         {{ 'total.price'|trans|raw }}
                     </th>
                     <td>
-                        <b style="font-size: large"> {{ ordering.price }} UAH </b>
+                        <b style="font-size: large"> {{ ordering.price }} грн </b>
                     </td>
                 </tr>
                 {% if ordering.deliveryType == "by_post" %}

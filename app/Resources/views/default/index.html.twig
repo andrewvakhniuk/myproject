@@ -2,27 +2,32 @@
 
 {% block outerbody %}
 
+    <!-- Play video button -->
+    {#<div class="mu-video-play-btn-header">#}
+    {#<i class="fa fa-play" aria-hidden="true"></i>#}
+    {#</div>#}
+    {#End play video button#}
     <!-- Start Header -->
-    <header id="mu-header" class="" role="banner">
-        <div id="header-video"></div>
-        <div class="mu-header-overlay">
-            <div>
-                <div class="mu-header-area">
+    {#<header id="mu-header" class="" role="banner">#}
+    {#<div id="header-video"></div>#}
+    {#<div class="mu-header-overlay">#}
+    {#<div>#}
+    {#<div class="mu-header-area">#}
 
-                    <!-- Start header featured area -->
-                    <div class="mu-header-featured-area">
+    {#<!-- Start header featured area -->#}
+    {#<div class="mu-header-featured-area">#}
 
-                        <div class="mu-header-featured-content">
-                            <h1>{{ 'header.header'|trans|raw }}</h1>
+    {#<div class="mu-header-featured-content">#}
+    {#<h1>{{ 'header.header'|trans|raw }}</h1>#}
 
-                        </div>
-                    </div>
-                    <!-- End header featured area -->
+    {#</div>#}
+    {#</div>#}
+    {#<!-- End header featured area -->#}
 
-                </div>
-            </div>
-        </div>
-    </header>
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+    {#</header>#}
     <!-- End Header -->
 
     <!-- Start Menu -->
@@ -40,11 +45,7 @@
         <!-- Start Order-->
         <div class="container">
             <div class="row">
-                <div id="order-container" class="col-md-12">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                <div id="order-container">
 
                     <div class="mu-title-area">
                         <h2 id="order-header" class="mu-title">{{ 'order.header'|trans|raw }}</h2>
@@ -55,64 +56,93 @@
                             {{ 'order.description'|trans|raw }}
                         </p>
                     </div>
-                    <div class="mu-faq-content">
-                        <div class="form-border">
-                            {{ form_start(form,{'attr':{'id':'order-form'}}) }}
-                            <div class="form-group row">
-                                {{ form_label(form.name,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
-                                <div class="col-sm-10 ">
-                                    {{ form_errors(form.name) }}
-                                    {{ form_widget(form.name,{'attr':{'class':'check-error'}}) }}
+
+                    <div class="mu-feature-content">
+                        <div style="display: table;" class="col-md-6">
+                            {#--left#}
+
+                            <div class="col-md-6">
+                                <div class="mu-feature-content-right">
+                                    <!-- Start single feature item -->
+                                    {% for i in 1..4 %}
+                                        <div class="media">
+                                            <div class="media-body order-feature-list">
+                                                {#<h3 class="media-heading">{{ ('features.feature'~i~'.header')|trans|raw }}</h3>#}
+
+                                                <p>
+                                                    <span class="glyphicon glyphicon-ok"></span> {{ ('order.feature.'~i~'.item')|trans|raw }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- End single feature item -->
+                                    {% endfor %}
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                {{ form_label(form.phone,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
-                                <div class="col-sm-10 ">
+                            {#--rigth#}
+                            <div class="col-md-6">
+                                <div class=".mu-feature-content-left">
+                                    <div class="order-image"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-border">
+                                {{ form_start(form,{'attr':{'id':'order-form'}}) }}
+                                <div class="form-group row">
+                                    {{ form_label(form.name) }}
+                                    {{ form_errors(form.name) }}
+                                    {{ form_widget(form.name,{'attr':{'class':'check-error'}}) }}
+
+                                </div>
+                                <div class="form-group row">
+                                    {{ form_label(form.phone) }}
                                     {{ form_errors(form.phone) }}
                                     {{ form_widget(form.phone,{'attr':{'minLength':'10','maxLength':'10','class':'check-error'}}) }}
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                {{ form_label(form.quantity,null,{'label_attr':{'class':"col-sm-2 col-form-label col-form-label-sm"}}) }}
-                                <div class="col-sm-10">
+                                <div class="form-group row">
+                                    {{ form_label(form.quantity) }}
                                     {{ form_errors(form.quantity) }}
                                     {{ form_widget(form.quantity,{'attr':{'type':'number','min':'1','max':'10','step':'1','class':'check-error'},'type':'number'}) }}
                                 </div>
-                            </div>
-                            {#//--price#}
+                                {#//--price#}
 
-                            <div style="text-align: center;margin: auto;width:100%; margin:10px;"
-                                 class="form-group row">
-                                <div class="price col-sm-2 col-form-label"
-                                     style="text-align: center;display: inline-flex;margin:5px; white-space: nowrap; width:100%;">
-                                    <h4 id="price" style="text-align: center;margin: auto;"></h4>
+                                <div style="text-align: center;margin: auto;width:100%; margin:10px;"
+                                     class="form-group row">
+                                    <div class="price col-sm-2 col-form-label"
+                                         style="text-align: center;display: inline-flex;margin:5px; white-space: nowrap; width:100%;">
+                                        <h4 id="price" style="text-align: center;margin: auto;"></h4>
+                                    </div>
                                 </div>
-                            </div>
 
-                            {{ form_widget(form.deliveryType) }}
-                            {{ form_widget(form.paymentMethod) }}
-                            {{ form_widget(form.price) }}
+                                {{ form_widget(form.deliveryType) }}
+                                {{ form_widget(form.paymentMethod) }}
+                                {{ form_widget(form.price) }}
 
-                            <div class="form-group row">
-                                <button style="width:80%;background-color:#c82333;color:white;" id="submit-order-button"
-                                        class="btn btn-danger btn-lg">
-                                    {{ 'order'|trans|raw }}
-                                </button>
-                                {#<div style="margin:auto;" class="submit-button round col-sm-10">#}
-                                {#<a  id="submit-order-button" class="button" href="#">{{ 'order'|trans|raw }}</a>#}
-                                {#</div>#}
-                            </div>
-                            <div>
-                                <input type="submit" style="display: none">
-                            </div>
-                            <div style="font-size: 8px;color:grey;">
-                                {{ 'data.usage'|trans|raw }}
-                            </div>
+                                <div class="form-group row">
+                                    <button style="width:100%;background-color:#c82333;color:white;"
+                                            id="submit-order-button"
+                                            class="btn btn-danger btn-lg">
+                                        {{ 'order'|trans|raw }}
+                                    </button>
+                                    {#<div style="margin:auto;" class="submit-button round col-sm-10">#}
+                                    {#<a  id="submit-order-button" class="button" href="#">{{ 'order'|trans|raw }}</a>#}
+                                    {#</div>#}
+                                </div>
+                                <div>
+                                    <input type="submit" style="display: none">
+                                </div>
+                                <div style="font-size: 8px;color:grey;">
+                                    {{ 'data.usage'|trans|raw }}
+                                </div>
 
-                            {{ form_widget(form._token) }}
-                            {{ form_end(form, {'render_rest': false}) }}
-                            {#<p>{{ 'features.description'|trans|raw }}</p>#}
+                                {{ form_widget(form._token) }}
+                                {{ form_end(form, {'render_rest': false}) }}
+                                {#<p>{{ 'features.description'|trans|raw }}</p>#}
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -157,7 +187,6 @@
                                                 </div>
                                                 <!-- End single feature item -->
                                             {% endfor %}
-
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +220,7 @@
                 <div class="mu-video-iframe-area">
                     <a class="mu-video-close-btn" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
                     <iframe class="mu-video-iframe" width="854" height="480"
-                            src="https://www.youtube.com/embed/QuUZLe5BWXk" frameborder="0" allowfullscreen></iframe>
+                            src="https://www.youtube.com/embed/iNyn8Xj-q8E" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             <!-- End Video content -->
@@ -218,9 +247,9 @@
 
                                 <div class="mu-apps-screenshot-slider">
 
-                                    {% for i in 1..4 %}
+                                    {% for i in 1..6 %}
                                         <div class="mu-single-screeshot">
-                                            <img style="width: 80%;"
+                                            <img style="width: 100%;"
                                                  src="{{ asset('assets/images/screenshot/0'~i~'.jpg') }}"
                                                  alt="App screenshot img">
                                         </div>
@@ -437,7 +466,8 @@
     <!-- Start footer -->
     <footer id="mu-footer" role="contentinfo">
         <div class="mu-footer-area">
-            <p style="font-size: 8px;" class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>.
+            <p style="font-size: 8px;" class="mu-copy-right">&copy; Copyright <a rel="nofollow"
+                                                                                 href="http://markups.io">markups.io</a>.
                 All right reserved.</p>
         </div>
     </footer>

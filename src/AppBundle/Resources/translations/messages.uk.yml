@@ -11,7 +11,7 @@ uk: Укр
 ru: Рос
 
 #order
-order.header: КУПУЙ САМЕ ЗАРАЗ І ОТРИМАЙ ЗНИЖКУ !!!
+order.header: <b style="color:red">АКЦІЯ!!!</b> КУПУЙ САМЕ ЗАРАЗ І ОТРИМАЙ ЗНИЖКУ!
 order.description: Можлива доставка за допомогою сервісу <b> Нова Пошта</b>, або ви можете забрати товар самостійно у місті Київ <b> м. Лівобережна та м.Васильківська</b>.
 # order form
 name: Ім'я
@@ -97,8 +97,8 @@ greetings: Дякуємо, що придбали Торофлакс! <b style="f
 your.order.details: Деталі вашого замовлення:
 order.id: Номер замовлення
 price.description: Додаткові послуги
-price.for.delivery.service:  ціна за доставку <b> 35 UAH </b>
-price.for.payment.after_delivery:  ціна за послугу накладний платіж <b> 25-30 UAH </b>
+price.for.delivery.service:  ціна за доставку <b> 35 грн </b>
+price.for.payment.after_delivery:  ціна за послугу накладний платіж <b> 25-30 грн </b>
 total.price: Сума до оплати за товар
 your.order.will.be.started.right.after.you.purchase.money.on.card: <b style="color:red;" > Ваше замовлення буде оброблене після оплати товару </b>
 credit_card.number: <b id="credit-card-number">5168 7422 1437 6968</b>
@@ -112,3 +112,8 @@ payment.at.the.post: Оплата за додаткові послуги при 
 copy: <i style="width:25px;" class="fa fa-copy"></i>
 #email
 email.order.details: Торофлакс.
+order.feature.1.item: У нас <b style="color:blue">преміум</b> якість!
+order.feature.2.item: <b style="color:blue">Оригінальний</b> продукт!
+order.feature.3.item: Іграшка <b style="color:blue">антистрес</b>!
+order.feature.4.item: <b style="color:blue">Подарунок</b> дитині і дорослому!
+video: Дивитись відео
