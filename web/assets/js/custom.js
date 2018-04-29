@@ -151,7 +151,7 @@
         event.preventDefault();
 
         $('html,body').animate({
-            scrollTop: $('#order-header').offset().top
+            scrollTop: $('#order-form').offset().top
         }, 300, 'swing');
     });
 
