@@ -243,6 +243,10 @@
         $(this).prev().find(".fa").removeClass("fa-minus").addClass("fa-plus");
     });
 
+    // $(".nav a").on("click", function(){
+    //     $(".nav").find(".active").removeClass("active");
+    //     // $(this).parent().addClass("active");
+    // });
 
 })(jQuery);
 
