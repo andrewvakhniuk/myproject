@@ -112,8 +112,8 @@ payment.at.the.post: Оплата за додаткові послуги при 
 copy: <i style="width:25px;" class="fa fa-copy"></i>
 #email
 email.order.details: Торофлакс.
-order.feature.1.item: У нас <b style="color:blue">преміум</b> якість!
-order.feature.2.item: <b style="color:blue">Оригінальний</b> продукт!
-order.feature.3.item: Іграшка <b style="color:blue">антистрес</b>!
-order.feature.4.item: <b style="color:blue">Подарунок</b> дитині і дорослому!
+order.feature.1.item: У нас <b class="order-feature-blue">преміум</b> якість!
+order.feature.2.item: <b class="order-feature-blue">Оригінальний</b> продукт!
+order.feature.3.item: Іграшка <b class="order-feature-blue">антистрес</b>!
+order.feature.4.item: <b class="order-feature-blue">Подарунок</b> дитині і дорослому!
 video: Дивитись відео

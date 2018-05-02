@@ -1491,11 +1491,18 @@ form label{
     height: 635px;
 }
 .order-feature-list .glyphicon{
-    color: green;
+    color: #3cba54;
     font-size:25px;
 }
 .order-feature-list p{
-    color: red;
-    /*font-size:25px;*/
+    color: black;
+    /*font-size:30px;*/
     font-weight: bold;
+    font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+}
+/*#order-container .media{*/
+    /*background-color: #4885ed;*/
+/*}*/
+.order-feature-blue {
+    color:#db3236;
 }

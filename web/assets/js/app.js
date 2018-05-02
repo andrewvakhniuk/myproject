@@ -54,14 +54,6 @@ $(function () {
     //--- START variables
     var $orderForm = $('#order-form');
     var $submitOrderButton = $('#submit-order-button');
-    // var $cityField = $('#appbundle_ordering_city');
-    // var $postOffice = $('#appbundle_ordering_postOffice');
-    // var $deliveryTypeHiddenField = $('#appbundle_ordering_deliveryType');  // 3 types : by_post/self_checkout/by_post_address
-    // var $deliveryTypeRadio = $('#delivery-type-radio');
-    //select post & location description divs
-    // var $deliveryFields = $('.delivery-fields');
-    // var $paymentMethodHiddenField = $('#appbundle_ordering_paymentMethod');
-    // var $paymentMethodRadio = $('#payment-method-radio-container');
     var $quantityField = $('#appbundle_ordering_quantity');
     var $phoneField = $('#appbundle_ordering_phone');
     var $priceHiddenField = $('#appbundle_ordering_price');
@@ -69,7 +61,7 @@ $(function () {
     var discountPercent = 49;//integer
     // var afterDeliveryPaymentPrice = 30;
     // var postServicePrice = 35;
-    var productPrice = 249;
+    var productPrice = 195;
     function countDiscount(){
         return Math.round( productPrice*discountPercent/(100-discountPercent));
     }
