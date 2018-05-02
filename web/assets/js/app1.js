@@ -61,7 +61,7 @@ $(function () {
     var discountPercent = 49;//integer
     // var afterDeliveryPaymentPrice = 30;
     // var postServicePrice = 35;
-    var productPrice = 195;
+    var productPrice = 225;
     function countDiscount(){
         return Math.round( productPrice*discountPercent/(100-discountPercent));
     }
