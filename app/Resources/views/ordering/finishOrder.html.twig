@@ -199,6 +199,7 @@
             //init city field select2
             var placeholder = $('label[for="' + $cityField.attr('id') + '"]').text();
             console.log(placeholder);
+
             $cityField.select2({
                 language: locale,
                 placeholder: placeholder,
@@ -222,12 +223,14 @@
                     },
                     // process data after receiving a success result to [{id: '',text: ''},..]
                     processResults: function (data) {
+
                         if (data.success === true) {
                             var result = data.data[0].Addresses.map(function (address) {
                                 //MainDescription is city name
                                 var region = address.Region === "" ? "" : ", р-н  "+address.Region;
                                 var area = address.Area === "" ? "": ", обл. "+address.Area;
-                                return {id: address.MainDescription, text:address.SettlementTypeCode +" "+ address.MainDescription+area+region};
+                                var fullName = address.SettlementTypeCode +" "+ address.MainDescription+area+region;
+                                return {id: address.DeliveryCity, text: fullName};
                             });
                             return {results: result};
                         } else {
@@ -243,7 +246,7 @@
                 "modelName": "AddressGeneral",
                 "calledMethod": "getWarehouses",
                 "methodProperties": {
-                    "CityName": "-",
+                    "CityRef": "-",
                     "Language": "ua"
                 }
             };
@@ -256,8 +259,9 @@
             });
             // on city change
             $cityField.on('change', function () {
-                // alert(typeof ($cityField.val()));
-                ajaxWarehousesParams.methodProperties.CityName = $cityField.val();
+
+                ajaxWarehousesParams.methodProperties.CityRef = $cityField.val();
+                $cityField.find(":selected").val($cityField.text()); // change city ref to city name
                 var data = JSON.stringify(ajaxWarehousesParams);
                 $.ajax({
                     "async": true,
@@ -377,7 +381,7 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/{{ app.request.locale }}.js"></script>
     <!-- Main Style -->
-    {#<link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet">#}
+    {#<link href="{{ asset('assets/css/style2.css') }}" rel="stylesheet">#}
     <link href="{{ asset('assets/css/radioButtons.css') }}" rel="stylesheet">
 
     <style>

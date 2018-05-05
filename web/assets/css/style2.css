@@ -164,17 +164,19 @@ button:focus {
     border: none;
 }
 .order-image{
-    top:-10px;
-    -webkit-box-shadow: 0px 0px 4px grey;
-    -moz-box-shadow:  0px 0px 4px grey;
-    box-shadow:  0px 0px 10px black;
+
+    /*top:20px;*/
+    -webkit-box-shadow: 0px 0px 3px grey;
+    -moz-box-shadow:  0px 0px 3px grey;
+    box-shadow:  0px 0px 3px black;
     position: relative;
-    background: url("../images/order.JPG");
+    background: url("../images/order-image.jpg");
     background-repeat: no-repeat;
     background-size: 100% ;    /*position: absolute;*/
-    height:449px;
+    height:223px;
     width:370px;
     margin:auto;
+    opacity: 0.9;
     /*left:-10px;*/
     /*padding:-100px;*/
 
@@ -200,7 +202,7 @@ button:focus {
     position: relative;
     /*margin: -50px;*/
     margin: auto;
-    padding: 40px;
+    padding: 10px 40px;
     -moz-box-shadow: 0 0 8px grey;
     -webkit-box-shadow: 0 0 8px grey;
     box-shadow: 0 0 8px grey;
@@ -1148,6 +1150,9 @@ button:focus {
 /*--------------------*/
 
 @media (max-width: 1199px) {
+    .form-border {
+        margin-left:200px;
+    }
 
     .mu-header-featured-content {
         margin-top: 120px;
@@ -1178,7 +1183,11 @@ button:focus {
 }
 
 @media (max-width: 991px) {
+    .form-border {
+        margin:auto;
+        margin-top:50px;
 
+    }
     /*#header-video{*/
         /*height: 500px;*/
     /*}*/
@@ -1495,7 +1504,7 @@ form label{
     font-size:25px;
 }
 .order-feature-list p{
-    color: black;
+    color: hsla(0, 0%, 30%,1)  ;
     /*font-size:30px;*/
     font-weight: bold;
     font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
@@ -1504,5 +1513,18 @@ form label{
     /*background-color: #4885ed;*/
 /*}*/
 .order-feature-blue {
-    color:#db3236;
+    color:#ff4444;
+}
+
+#order-background{
+    /*top:-10px;*/
+    position: absolute;
+    /*left: -50px;*/
+    background: url("../images/background_order.jpg");
+    background-repeat: no-repeat;
+    background-size: 1550px 100%;    /*position: absolute;*/
+    width: 100%;
+    height: 900px;
+    opacity: 0.2;
+    z-index: 0;
 }
