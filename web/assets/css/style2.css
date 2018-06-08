@@ -1309,12 +1309,12 @@ button:focus {
         margin-bottom: 10px;
     }
 
-    .mu-menu-btn {
-        /*top: 44px;*/
-        color: #fff;
-        font-size: 30px;
-        padding: 5px 12px;
-    }
+    /*.mu-menu-btn {*/
+        /*!*top: 44px;*!*/
+        /*color: #fff;*/
+        /*font-size: 30px;*/
+        /*padding: 5px 12px;*/
+    /*}*/
 
     .mu-logo {
         margin-top: 25px;
