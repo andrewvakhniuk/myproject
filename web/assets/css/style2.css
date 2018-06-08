@@ -278,26 +278,65 @@ button:focus {
 .mu-logo:focus {
     color: #fff;
 }
+/* The animation code */
+@keyframes blinking {
+    0%   {
+        -webkit-box-shadow:    0 0 0px 0px black;
+        -moz-box-shadow:   0 0 0px 0px black;
+        box-shadow:  0 0 0px 0px black;
+    }
+    30%  {
+        -webkit-box-shadow:     0 0 10px 3px greenyellow;
+        -moz-box-shadow:   0 0 10px 3px greenyellow;
+        box-shadow:   0 0 10px 3px greenyellow;
+    }
+    50% {
+        -webkit-box-shadow:     0 0 10px 3px black;
+        -moz-box-shadow:   0 0 10px 3px black;
+        box-shadow:  0 0 10px 3px black;
+    }
+    100% {
+        -webkit-box-shadow:     0 0 1px 0px black;
+        -moz-box-shadow:     0 0 1px 0px black;
+        box-shadow:  0 0 1px 0px black;
+    }
+}
+
 
 .mu-menu-btn {
+
+    animation-name: blinking;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+
+    -webkit-border-radius:50% ;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
     position: fixed;
-    right: 15%;
-    top: 100px;
+    right: 5%;
+    bottom:5%;
+    /*top: 100px;*/
     color: #fff;
-    font-size: 25px;
-    border: 2px solid #fff;
+    font-size: 35px;
+    text-align: center;
+    /*border: 2px solid #fff;*/
     padding: 5px 14px;
     z-index: 999;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+    -webkit-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
     background-color: red;
+
+
 }
 
-.mu-menu-btn:hover,
-.mu-menu-btn:focus {
-    border: 2px solid #fff;
-}
+
+/*.mu-menu-btn:hover*/
+/*{*/
+    /*-webkit-box-shadow:  0 0 0px 5px rgba(0, 0, 0, 0.5);*/
+    /*-moz-box-shadow:  0 0 0px 5px rgba(0, 0, 0, 0.5);*/
+    /*box-shadow:  0 0 7px 2px black;*/
+/*}*/
 
 /*=== Featured section ===*/
 
@@ -1264,7 +1303,7 @@ button:focus {
     .mu-menu-btn {
         /*top: 44px;*/
         color: #fff;
-        font-size: 20px;
+        font-size: 30px;
         padding: 5px 12px;
     }
 
