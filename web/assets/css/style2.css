@@ -281,23 +281,23 @@ button:focus {
 /* The animation code */
 @keyframes blinking {
     0%   {
-        -webkit-box-shadow:    0 0 0px 0px black;
-        -moz-box-shadow:   0 0 0px 0px black;
+        /*-webkit-box-shadow:    0 0 0px 0px black;*/
+        /*-moz-box-shadow:   0 0 0px 0px black;*/
         box-shadow:  0 0 0px 0px black;
     }
     30%  {
-        -webkit-box-shadow:     0 0 10px 3px greenyellow;
-        -moz-box-shadow:   0 0 10px 3px greenyellow;
+        /*-webkit-box-shadow:     0 0 10px 3px greenyellow;*/
+        /*-moz-box-shadow:   0 0 10px 3px greenyellow;*/
         box-shadow:   0 0 10px 3px greenyellow;
     }
     50% {
-        -webkit-box-shadow:     0 0 10px 3px black;
-        -moz-box-shadow:   0 0 10px 3px black;
+        /*-webkit-box-shadow:     0 0 10px 3px black;*/
+        /*-moz-box-shadow:   0 0 10px 3px black;*/
         box-shadow:  0 0 10px 3px black;
     }
     100% {
-        -webkit-box-shadow:     0 0 1px 0px black;
-        -moz-box-shadow:     0 0 1px 0px black;
+        /*-webkit-box-shadow:     0 0 1px 0px black;*/
+        /*-moz-box-shadow:     0 0 1px 0px black;*/
         box-shadow:  0 0 1px 0px black;
     }
 }
