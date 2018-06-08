@@ -305,9 +305,12 @@ button:focus {
 
 .mu-menu-btn {
 
-    animation-name: blinking;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
+    -webkit-animation:  blinking 2s infinite;
+    -moz-animation:  blinking 2s infinite;
+    -o-animation:  blinking 2s infinite;
+    -ms-animation:  blinking 2s infinite;
+    animation: blinking 2s infinite;
+
 
     -webkit-border-radius:50% ;
     -moz-border-radius: 50%;
