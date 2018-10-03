@@ -15,7 +15,7 @@
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
 
-    <link type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"/>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 
     <script type="text/javascript" src="{{ asset('/assets/js/cookieFunctions.js') }}"></script>
@@ -23,14 +23,14 @@
 
 
     {#<script>#}
-        {#var data = {{ data|json_encode()|raw }};#}
+    {#var data = {{ data|json_encode()|raw }};#}
     {#</script>#}
     <script src="{{ asset('assets/js/ordering.js') }}"></script>
 
     <style>
-        .selected{
+        .selected {
             color: #fff;
-            background-color: #007bff!important;
+            background-color: #007bff !important;
         }
     </style>
 {% endblock %}
@@ -41,33 +41,34 @@
     <div id="change-status-dropdown" class="btn-group"
          style="margin-left:50px;"
     >
-            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Change status to
-            </button>
-            <div class="dropdown-menu">
-                - Order status :
-                <div class="dropdown-divider"></div>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Change status to
+        </button>
+        <div class="dropdown-menu">
+            - Order status :
+            <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item change-status order-status" id="new" href="#">New</a>
-                <a class="dropdown-item change-status order-status" id="in_progress" href="#">In Progress</a>
-                <a class="dropdown-item change-status order-status" id="sent" href="#">Sent</a>
-                <a class="dropdown-item change-status order-status" id="complete" href="#">Complete</a>
-                <a class="dropdown-item change-status order-status" id="returned" href="#">Returned</a>
+            <a class="dropdown-item change-status order-status" id="new" href="#">New</a>
+            <a class="dropdown-item change-status order-status" id="in_progress" href="#">In Progress</a>
+            <a class="dropdown-item change-status order-status" id="sent" href="#">Sent</a>
+            <a class="dropdown-item change-status order-status" id="complete" href="#">Complete</a>
+            <a class="dropdown-item change-status order-status" id="returned" href="#">Returned</a>
 
-                <div class="dropdown-divider"></div>
-                {#payment statuses#}
-                 - Payment status :
-                <div class="dropdown-divider"></div>
+            <div class="dropdown-divider"></div>
+            {#payment statuses#}
+            - Payment status :
+            <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item change-status payment-status"  class="" id="true" href="#">Payed</a>
-                <a  class="dropdown-item change-status payment-status" id="false" href="#">Not Payed</a>
+            <a class="dropdown-item change-status payment-status" class="" id="true" href="#">Payed</a>
+            <a class="dropdown-item change-status payment-status" id="false" href="#">Not Payed</a>
 
-            </div>
         </div>
-<div class="table-responsive ">
-    <table id="datatable" class="table table-striped dt-responsive display nowrap" cellspacing="0" width="100%">
+    </div>
+    <div class="table-responsive ">
+        <table id="datatable" class="table table-striped dt-responsive display nowrap" cellspacing="0" width="100%">
 
-        <thead>
+            <thead>
             <tr id="filter" style="display:none">
                 <th>Id</th>
                 <th>Date</th>
@@ -102,9 +103,9 @@
                 <th>ip address</th>
                 <th>Details</th>
             </tr>
-        </thead>
-    </table>
-</div>
+            </thead>
+        </table>
+    </div>
     <ul>
         <li>
             <a href="{{ path('ordering_new') }}">Create a new ordering</a>

@@ -3,6 +3,7 @@ $(function () {
     // Get the form.
     var form = $('#ajax-contact');
 
+
     // Get the messages div.
     var formMessages = $('#form-messages');
 
@@ -10,7 +11,9 @@ $(function () {
     $(form).submit(function (e) {
         // Stop the browser from submitting the form.
         e.preventDefault();
-
+        if($(form).attr('disabled')){
+            return;
+        }
         // Serialize the form data.
         var formData = $(form).serialize();
 

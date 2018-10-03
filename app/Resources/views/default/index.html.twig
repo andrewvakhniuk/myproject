@@ -386,6 +386,7 @@
                             </div>
 
 
+
                             <!-- Start Contact Content -->
                             <div class="mu-contact-content">
                                 <div class="row">
@@ -476,14 +477,12 @@
 
 
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Bootstrap -->
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+
     <!-- Slick slider -->
     <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
 
+    {#captcha#}
 
     <!-- Ajax contact form  -->
     <script type="text/javascript" src="{{ asset('assets/js/app2.js') }}"></script>
@@ -494,11 +493,18 @@
     <script type="text/javascript" src="{{ asset('assets/js/custom.js') }}"></script>
 
 
+    <script>
+        $('#ajax-contact').captcha();
+    </script>
 
 {% endblock %}
 
 {% block stylesheets %}
-
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     {#<script type="text/javascript" src="https://vk.com/js/api/share.js?93" charset="windows-1251"></script>#}
 
     <!-- Favicon -->
@@ -513,6 +519,10 @@
     <link id="switcher" href="{{ asset('assets/css/theme-color/default-theme.css') }}" rel="stylesheet">
 
 
+    {#<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>#}
+    <script src="{{ asset('assets/math-captcha/src/jquery.captcha.basic.js') }}"></script>
+
+
     <!-- Main Style -->
     <link href="{{ asset('assets/css/style2.css') }}" rel="stylesheet">
 
@@ -520,7 +530,13 @@
 
     <!-- Open Sans for body and title font -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
+    <style>
+        #captchaInput {
+            width: 2.5em;
+            margin-right: .5em;
+        }
 
+    </style>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

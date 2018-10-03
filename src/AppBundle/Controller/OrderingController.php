@@ -38,6 +38,7 @@ class OrderingController extends Controller
             ->from('AppBundle:Ordering', 'orders')
             ->getQuery()
             ->getArrayResult();
+
         $data['data'] = $data;
         $data['status'] = 'success';
         $data = json_encode($data, JSON_UNESCAPED_UNICODE);
